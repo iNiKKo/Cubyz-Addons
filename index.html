@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cubyz Addons</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .addon-card {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.1s ease;
+    }
+
+    .addon-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .addon-icon img {
+      width: 64px;
+      height: 64px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .addon-icon {
+      flex: 0 0 70px;
+      margin-right: 20px;
+    }
+
+    .addon-info {
+      flex: 1;
+    }
+
+    .addon-info h2 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #222;
+    }
+
+    .addon-info p {
+      margin: 5px 0 0;
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    .addon-version {
+      flex: 0 0 80px;
+      text-align: center;
+      font-weight: bold;
+      color: #333;
+      font-size: 0.9em;
+    }
+
+    .addon-download {
+      flex: 0 0 110px;
+      text-align: center;
+    }
+
+    .addon-download a {
+      display: inline-block;
+      background: #4CAF50;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.2s ease;
+    }
+
+    .addon-download a:hover {
+      background: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cubyz Addons</h1>
+
+  <!-- Example Addon -->
+  <div class="addon-card">
+    <div class="addon-icon">
+      <img src="https://via.placeholder.com/64" alt="Addon Icon">
+    </div>
+    <div class="addon-info">
+      <h2>Example Addon</h2>
+      <p>By CoolDev — Adds cool stuff to the game like laser cows and flying trees.</p>
+    </div>
+    <div class="addon-version">
+      v1.0.3
+    </div>
+    <div class="addon-download">
+      <a href="#">Download</a>
+    </div>
+  </div>
+
+  <!-- Duplicate the above .addon-card div for more addons -->
+
+</body>
+</html>
