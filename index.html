@@ -10,11 +10,29 @@
       background: #181a1b;
       color: #f1f1f1;
       margin: 0;
-      padding: 20px;
+    }
+
+    .site-header {
+      width: 100%;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .site-header h1 {
+      font-size: 2em;
+      color: #ffffff;
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #4CAF50;
+      display: inline-block;
+    }
+
+    .addon-container {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
+      padding: 20px;
     }
 
     .addon-card {
@@ -123,45 +141,55 @@
 </head>
 <body>
 
-  
-  <div class="addon-card">
-    <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner1/400/200');"></div>
-    <div class="addon-icon">
-      <img src="https://via.placeholder.com/64" alt="Addon Icon">
-    </div>
-    <div class="addon-info">
-      <h2>Materialz</h2>
-      <p>By Amelie — Adds new stuff :)</p>
-      <div class="addon-tags">
-        <div class="addon-tag">unstable as fuc#</div>
-        <div class="addon-tag">v0.0.0</div>
-        <div class="addon-tag">Cubyz</div>
+  <header class="site-header">
+    <h1>Cubyz Addons</h1>
+  </header>
+
+  <div class="addon-container">
+
+    <div class="addon-card">
+      <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner1/400/200');"></div>
+      <div class="addon-icon">
+        <img src="https://via.placeholder.com/64" alt="Addon Icon">
       </div>
-      <div class="addon-stats">
-        <span>v6.6.6</span>
+      <div class="addon-info">
+        <h2>Materialz</h2>
+        <p>By Amelie — Adds new stuff :)</p>
+        <div class="addon-tags">
+          <div class="addon-tag">Unstable</div>
+          <div class="addon-tag">v0.0.0</div>
+          <div class="addon-tag">Cubyz</div>
+        </div>
+        <div class="addon-stats">
+          <span>v6.6.6</span>
+          <span>19k downloads</span>
+        </div>
+        <a class="addon-download-btn" href="#" title="Download">⬇</a>
       </div>
-      <a class="addon-download-btn" href="#" title="Download">⬇</a>
     </div>
+
+    <div class="addon-card">
+      <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner2/400/200');"></div>
+      <div class="addon-icon">
+        <img src="https://via.placeholder.com/64" alt="Addon Icon">
+      </div>
+      <div class="addon-info">
+        <h2>Jungle Update</h2>
+        <p>By Amelie — Adds new stuff also :)</p>
+        <div class="addon-tags">
+          <div class="addon-tag">Unstable</div>
+          <div class="addon-tag">v0.0.0</div>
+          <div class="addon-tag">Cubyz</div>
+        </div>
+        <div class="addon-stats">
+          <span>v6.6.6</span>
+          <span>10.4k downloads</span>
+        </div>
+        <a class="addon-download-btn" href="#" title="Download">⬇</a>
+      </div>
+    </div>
+
   </div>
-  <div class="addon-card">
-    <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner1/400/200');"></div>
-    <div class="addon-icon">
-      <img src="https://via.placeholder.com/64" alt="Addon Icon">
-    </div>
-    <div class="addon-info">
-      <h2>Jungle Update</h2>
-      <p>By Amelie — Adds new stuff also :)</p>
-      <div class="addon-tags">
-        <div class="addon-tag">unstable as fuc#</div>
-        <div class="addon-tag">v0.0.0</div>
-        <div class="addon-tag">Cubyz</div>
-      </div>
-      <div class="addon-stats">
-        <span>v6.6.6</span>
-      </div>
-      <a class="addon-download-btn" href="#" title="Download">⬇</a>
-    </div>
-  </div>
-  
+
 </body>
 </html>
