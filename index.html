@@ -7,120 +7,137 @@
   <style>
     body {
       font-family: sans-serif;
-      background: #f2f2f2;
+      background: #181a1b;
+      color: #f1f1f1;
       margin: 0;
       padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
 
     .addon-card {
+      width: 300px;
+      background: #2a2d2e;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
       display: flex;
-      align-items: center;
-      background: white;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      transition: transform 0.1s ease;
+      flex-direction: column;
+      transition: transform 0.2s ease;
     }
 
     .addon-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-4px);
     }
 
-    .addon-icon img {
-      width: 64px;
-      height: 64px;
-      border-radius: 8px;
-      object-fit: cover;
+    .addon-banner {
+      width: 100%;
+      height: 120px;
+      background-size: cover;
+      background-position: center;
     }
 
     .addon-icon {
-      flex: 0 0 70px;
-      margin-right: 20px;
+      position: absolute;
+      top: 80px;
+      left: 16px;
+      width: 64px;
+      height: 64px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 4px solid #2a2d2e;
+      background: #333;
+    }
+
+    .addon-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .addon-info {
-      flex: 1;
+      padding: 50px 16px 16px;
     }
 
     .addon-info h2 {
       margin: 0;
       font-size: 1.2em;
-      color: #222;
+      color: #fff;
     }
 
     .addon-info p {
-      margin: 5px 0 0;
-      color: #555;
       font-size: 0.95em;
+      color: #ccc;
+      margin: 6px 0 12px;
     }
 
-    .addon-version {
-      flex: 0 0 80px;
-      text-align: center;
-      font-weight: bold;
-      color: #333;
-      font-size: 0.9em;
+    .addon-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
     }
 
-    .addon-download {
-      flex: 0 0 110px;
-      text-align: center;
-    }
-
-    .addon-download a {
-      display: inline-block;
-      background: #4CAF50;
-      color: white;
-      padding: 8px 14px;
+    .addon-tag {
+      background: #3c3f41;
+      color: #aaa;
+      font-size: 0.75em;
+      padding: 2px 6px;
       border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background 0.2s ease;
     }
 
-    .addon-download a:hover {
-      background: #45a049;
+    .addon-stats {
+      font-size: 0.8em;
+      color: #999;
+      display: flex;
+      justify-content: space-between;
     }
   </style>
 </head>
 <body>
 
-  <h1>Cubyz Addons</h1>
+  <div class="addon-card">
+    <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner1/400/200');"></div>
+    <div class="addon-icon">
+      <img src="https://via.placeholder.com/64" alt="Addon Icon">
+    </div>
+    <div class="addon-info">
+      <h2>Laser Cows</h2>
+      <p>By USER — DESCRIPTION RIGHT HERE.</p>
+      <div class="addon-tags">
+        <div class="addon-tag">Client</div>
+        <div class="addon-tag">Fun</div>
+        <div class="addon-tag">Cubyz</div>
+      </div>
+      <div class="addon-stats">
+        <span>v1.0.4</span>
+        <span>18.2k downloads</span>
+      </div>
+    </div>
+  </div>
+    <div class="addon-card">
+    <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner1/400/200');"></div>
+    <div class="addon-icon">
+      <img src="https://via.placeholder.com/64" alt="Addon Icon">
+    </div>
+    <div class="addon-info">
+      <h2>Laser Cows</h2>
+      <p>By USER — DESCRIPTION RIGHT HERE2.</p>
+      <div class="addon-tags">
+        <div class="addon-tag">Client</div>
+        <div class="addon-tag">Fun</div>
+        <div class="addon-tag">Cubyz</div>
+      </div>
+      <div class="addon-stats">
+        <span>v1.0.4</span>
+        <span>18.2k downloads</span>
+      </div>
+    </div>
+  </div>
 
-  <!-- Example Addon -->
-  <div class="addon-card">
-    <div class="addon-icon">
-      <img src="https://via.placeholder.com/64" alt="Addon Icon">
-    </div>
-    <div class="addon-info">
-      <h2>Example Addon</h2>
-      <p>By USER — DESCRIPTION GOES HERE SO FILL IT UP.</p>
-    </div>
-    <div class="addon-version">
-      v6.6.6
-    </div>
-    <div class="addon-download">
-      <a href="#">Download</a>
-    </div>
-  </div>
-  
-  <div class="addon-card">
-    <div class="addon-icon">
-      <img src="https://via.placeholder.com/64" alt="Addon Icon">
-    </div>
-    <div class="addon-info">
-      <h2>Example Addon2</h2>
-      <p>By USER2 — DESCRIPTION GOES HERE SO FILL IT UP2.</p>
-    </div>
-    <div class="addon-version">
-      v6.6.6
-    </div>
-    <div class="addon-download">
-      <a href="#">Download</a>
-    </div>
-  </div>
-  <!-- Duplicate the above .addon-card div for more addons -->
 
 </body>
 </html>
