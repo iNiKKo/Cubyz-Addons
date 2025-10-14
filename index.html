@@ -60,6 +60,7 @@
 
     .addon-info {
       padding: 50px 16px 16px;
+      position: relative;
     }
 
     .addon-info h2 {
@@ -95,10 +96,34 @@
       display: flex;
       justify-content: space-between;
     }
+
+    .addon-download-btn {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      background: #4CAF50;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      transition: background 0.2s ease;
+    }
+
+    .addon-download-btn:hover {
+      background: #45a049;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Card Example -->
   <div class="addon-card">
     <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner1/400/200');"></div>
     <div class="addon-icon">
@@ -106,38 +131,19 @@
     </div>
     <div class="addon-info">
       <h2>Laser Cows</h2>
-      <p>By USER — DESCRIPTION RIGHT HERE.</p>
+      <p>By CoolDev — Adds cows that shoot lasers. Very useful.</p>
       <div class="addon-tags">
-        <div class="addon-tag">Client</div>
-        <div class="addon-tag">Fun</div>
+        <div class="addon-tag">unstable as fuc#</div>
+        <div class="addon-tag">v0.0.0</div>
         <div class="addon-tag">Cubyz</div>
       </div>
       <div class="addon-stats">
-        <span>v1.0.4</span>
-        <span>18.2k downloads</span>
+        <span>v6.6.6</span>
+        <span>0 downloads</span>
       </div>
+      <a class="addon-download-btn" href="#" title="Download">⬇</a>
     </div>
   </div>
-    <div class="addon-card">
-    <div class="addon-banner" style="background-image: url('https://picsum.photos/seed/banner1/400/200');"></div>
-    <div class="addon-icon">
-      <img src="https://via.placeholder.com/64" alt="Addon Icon">
-    </div>
-    <div class="addon-info">
-      <h2>Laser Cows</h2>
-      <p>By USER — DESCRIPTION RIGHT HERE2.</p>
-      <div class="addon-tags">
-        <div class="addon-tag">Client</div>
-        <div class="addon-tag">Fun</div>
-        <div class="addon-tag">Cubyz</div>
-      </div>
-      <div class="addon-stats">
-        <span>v1.0.4</span>
-        <span>18.2k downloads</span>
-      </div>
-    </div>
-  </div>
-
 
 </body>
 </html>
