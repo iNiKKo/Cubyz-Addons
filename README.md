@@ -24,13 +24,4 @@ Send the following information to the repository maintainer (via PR or message):
 7. **Addon File**:
    - `.zip` file containing your addon files.
 
-> 📁 Folder example:
-> ```
-> Addons/
-> └── MyAddon/
->     ├── MyAddon_BG.png
->     ├── MyAddon_Icon.png
->     └── MyAddon_v0.1.zip
-> ```
-
 ---
