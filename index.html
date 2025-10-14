@@ -79,6 +79,9 @@
     .addon-info {
       padding: 50px 16px 16px;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 200px;
     }
 
     .addon-info h2 {
@@ -91,13 +94,20 @@
       font-size: 0.95em;
       color: #ccc;
       margin: 6px 0 12px;
+      flex-grow: 1;
+      overflow: auto;
+    }
+
+    .addon-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .addon-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 10px;
     }
 
     .addon-tag {
@@ -108,11 +118,12 @@
       border-radius: 6px;
     }
 
-    .addon-stats {
+    .addon-version-author {
       font-size: 0.8em;
       color: #999;
-      display: flex;
-      justify-content: space-between;
+      text-align: right;
+      line-height: 1.2;
+      margin-right: 50px;
     }
 
     .addon-download-btn {
@@ -155,12 +166,15 @@
       <div class="addon-info">
         <h2>Materialz</h2>
         <p>Adds new stuff By AmelieCherry</p>
-        <div class="addon-tags">
-          <div class="addon-tag">Recepies</div>
-          <div class="addon-tag">Blocks</div>
-        </div>
-        <div class="addon-stats">
-          <span>v0.0.0</span>
+        <div class="addon-footer">
+          <div class="addon-tags">
+            <div class="addon-tag">Recepies</div>
+            <div class="addon-tag">Blocks</div>
+          </div>
+          <div class="addon-version-author">
+            <div>v0.0.0</div>
+            <div>By AmelieCherry</div>
+          </div>
         </div>
         <a class="addon-download-btn" href="Addons/Materialz/materialz_0.1.zip" title="Download">⬇</a>
       </div>
@@ -173,19 +187,22 @@
       </div>
       <div class="addon-info">
         <h2>Fancy Jungle</h2>
-        <p>Jungle improvements,additionally it contains monstera plant By ARGmasterPlay</p>
-        <div class="addon-tags">
-          <div class="addon-tag">Biome</div>
-          <div class="addon-tag">Improvement</div>
-        </div>
-        <div class="addon-stats">
-          <span>v0.0.0</span>
+        <p>Jungle improvements, additionally it contains monstera plant By ARGmasterPlay</p>
+        <div class="addon-footer">
+          <div class="addon-tags">
+            <div class="addon-tag">Biome</div>
+            <div class="addon-tag">Improvement</div>
+          </div>
+          <div class="addon-version-author">
+            <div>v0.0.0</div>
+            <div>By ARGmasterPlay</div>
+          </div>
         </div>
         <a class="addon-download-btn" href="Addons/Fancy_Jungle/jungle2.zip" title="Download">⬇</a>
       </div>
     </div>
 
-        <div class="addon-card">
+    <div class="addon-card">
       <div class="addon-banner" style="background-image: url('Addons/Fancy_Willows/Fancy_Willows_BG.png');"></div>
       <div class="addon-icon">
         <img src="https://via.placeholder.com/64" alt="Addon Icon">
@@ -193,17 +210,20 @@
       <div class="addon-info">
         <h2>Fancy Willows</h2>
         <p>Few fancy willow tree models around swamp and wetlands By ARGmasterPlay</p>
-        <div class="addon-tags">
-          <div class="addon-tag">Biome</div>
-          <div class="addon-tag">Improvement</div>
-        </div>
-        <div class="addon-stats">
-          <span>v0.0.0</span>
+        <div class="addon-footer">
+          <div class="addon-tags">
+            <div class="addon-tag">Biome</div>
+            <div class="addon-tag">Improvement</div>
+          </div>
+          <div class="addon-version-author">
+            <div>v0.0.0</div>
+            <div>By ARGmasterPlay</div>
+          </div>
         </div>
         <a class="addon-download-btn" href="Addons/Fancy_Willows/willows.zip" title="Download">⬇</a>
       </div>
     </div>
-    
+
   </div>
 
 </body>
