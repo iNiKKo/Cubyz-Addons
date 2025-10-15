@@ -8,16 +8,34 @@ body {
 .site-header {
     width: 100%;
     text-align: center;
-    padding: 20px 0;
+    padding: 40px 0;
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.site-header h1 {
-    font-size: 2em;
-    color: #ffffff;
-    margin: 0;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #4CAF50;
-    display: inline-block;
+.site-title {
+    font-weight: 700;
+    font-size: 3rem;
+    letter-spacing: 2px;
+    display: inline-flex;
+    gap: 12px;
+}
+
+.site-title .cubyz {
+    color: #444B4F; /* dark grey */
+}
+
+.site-title .addon {
+    color: #4CAF50; /* your green */
+    font-style: italic;
+    text-shadow: 0 0 8px rgba(76, 175, 80, 0.7);
+    transform: skew(-10deg);
+}
+
+.site-title .central {
+    color: #444B4F; /* dark grey */
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
 .addon-container {
@@ -143,5 +161,5 @@ body {
     height: 24px;
     display: block;
     margin: auto;
-    fill: white; /* make sure SVG icon inherits white color */
+    fill: white;
 }
