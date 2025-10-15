@@ -43,8 +43,23 @@ body {
   padding: 20px;
 }
 
+.addon-card-link {
+  display: inline-block;
+  width: 300px; 
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.addon-card-link:hover {
+  transform: translateY(-4px);
+}
+
 .addon-card {
-  width: 300px;
+  width: 300px;       
+  min-height: 400px;  
   background: #2a2d2e;
   border-radius: 12px;
   overflow: hidden;
@@ -53,10 +68,7 @@ body {
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease;
-}
-
-.addon-card:hover {
-  transform: translateY(-4px);
+  cursor: pointer;  
 }
 
 .addon-banner {
@@ -141,8 +153,10 @@ body {
   gap: 8px;
 }
 
-.addon-download-btn,
-.addon-info-btn {
+
+
+
+.addon-download-btn {
   width: 40px;
   height: 40px;
   border-radius: 10px;
@@ -154,31 +168,23 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   transition: background 0.2s ease;
   padding: 0;
-}
-
-.addon-download-btn {
   background: #4CAF50;
+  pointer-events: auto; 
+  position: relative;
+  z-index: 10; 
 }
 
 .addon-download-btn:hover {
   background: #45a049;
 }
 
-.addon-info-btn {
-  background-color: #007bff;
-}
-
-.addon-info-btn:hover {
-  background-color: #0056b3;
-}
-
-.addon-download-btn svg,
-.addon-info-btn svg {
+.addon-download-btn svg {
   width: 24px;
   height: 24px;
   fill: white;
   display: block;
 }
+
 
 .download-btn,
 .info-btn {

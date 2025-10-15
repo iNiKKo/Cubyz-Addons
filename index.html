@@ -28,8 +28,9 @@
       addons.forEach(addon => {
         const tagsHTML = addon.tags.map(tag => `<div class="addon-tag">${tag}</div>`).join('');
 
+
         const cardHTML = `
-          <div class="addon-card">
+          <div class="addon-card" tabindex="0" role="link" aria-label="More info about ${addon.name}" data-info-page="${addon.infoPage}">
             <div class="addon-banner" style="background-image: url('${addon.banner}');"></div>
             <div class="addon-icon">
               <img src="${addon.icon}" alt="Addon Icon">
@@ -45,12 +46,7 @@
                   <div>By ${addon.author}</div>
                 </div>
                 <div class="addon-footer-buttons">
-                  <a class="addon-info-btn" href="${addon.infoPage}" title="More Info" aria-label="More Info">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.75 15h-1.5v-6h1.5v6zm0-8h-1.5V7h1.5v2z"/>
-                    </svg>
-                  </a>
-                  <a class="addon-download-btn" href="${addon.download}" title="Download" aria-label="Download">
+                  <a class="addon-download-btn" href="${addon.download}" title="Download" aria-label="Download" target="_blank" rel="noopener noreferrer">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z"/>
                     </svg>
@@ -62,6 +58,23 @@
         `;
 
         container.insertAdjacentHTML('beforeend', cardHTML);
+      });
+
+
+      container.querySelectorAll('.addon-card').forEach(card => {
+        card.addEventListener('click', e => {
+
+          if (e.target.closest('.addon-download-btn')) return;
+          const url = card.dataset.infoPage;
+          if (url) window.location.href = url;
+        });
+
+        card.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            card.click();
+          }
+        });
       });
     }
 
