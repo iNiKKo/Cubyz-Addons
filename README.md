@@ -13,16 +13,15 @@ Send the following information to the repository maintainer (via PR or message):
 
 ### ✉️ What to Send:
 
-1. **Name** – What’s your addon called?
-2. **Description** – A short summary of what it does.
-3. **Tags** – Relevant keywords (e.g. `Blocks`, `Recipes`, `Biome`).
-4. **Version** – Addon version (e.g. `v0.1`).
-5. **Your Name** – Crediting the creator.
+1. **Name** – What’s your addon called?  
+2. **Description** – A short summary of what it does.  
+3. **Tags** – Relevant keywords (e.g. `Blocks`, `Recipes`, `Biome`).  
+4. **Version** – Addon version (e.g. `v0.1`).  
+5. **Your Name** – Crediting the creator.  
 6. **Images**:
-   - `name_icon.png` (64x64 recommended)
-   - `name_background.png` (used as banner)
+    - `name_icon.png` (64x64 recommended)
+    - `name_background.png` (used as banner)
 7. **Addon File**:
-   - `name_v0.0.zip` file containing your addon files.
+    - `name_v0.0.zip` file containing your addon files.
 
 > **Note:** Please use the same naming scheme as shown above & only use lowercase letters, thank you.
----
