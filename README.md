@@ -24,4 +24,5 @@ Send the following information to the repository maintainer (via PR or message):
 7. **Addon File**:
    - `name_v0.0.zip` file containing your addon files.
 
+> **Note:** Please use the same naming scheme as shown above & only use lowercase letters, thank you.
 ---
