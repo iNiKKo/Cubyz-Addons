@@ -1,161 +1,223 @@
+/* === General Styles === */
 body {
-    font-family: sans-serif;
-    background: #181a1b;
-    color: #f1f1f1;
-    margin: 0;
+  font-family: sans-serif;
+  background: #181a1b;
+  color: #f1f1f1;
+  margin: 0;
 }
 
 .site-header {
-    width: 100%;
-    text-align: center;
-    padding: 40px 0;
-    user-select: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 100%;
+  text-align: center;
+  padding: 40px 0;
+  user-select: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .site-title {
-    font-weight: 700;
-    font-size: 3rem;
-    letter-spacing: 2px;
-    display: inline-flex;
-    gap: 12px;
+  font-weight: 700;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  display: inline-flex;
+  gap: 12px;
 }
 
 .site-title .cubyz {
-    color: #5cad4c;
-    font-style: normal;
-    text-shadow: 0 0 8px rgba(56, 119, 39, 0.534);
-    transform: skew(-10deg);
-    font-family: "BBH Sans Hegarty", sans-serif;
+  color: #5cad4c;
+  font-style: normal;
+  text-shadow: 0 0 8px rgba(56, 119, 39, 0.534);
+  transform: skew(-10deg);
+  font-family: "BBH Sans Hegarty", sans-serif;
 }
 
-.addon-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
-}
-
-.addon-card {
-    width: 300px;
-    background: #2a2d2e;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.2s ease;
-}
-
-.addon-card:hover {
-    transform: translateY(-4px);
-}
-
-.addon-banner {
-    width: 100%;
-    height: 120px;
-    background-size: cover;
-    background-position: center;
-}
-
-.addon-icon {
-    position: absolute;
-    top: 80px;
-    left: 16px;
-    width: 64px;
-    height: 64px;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 4px solid #2a2d2e;
-    background: #333;
-}
-
-.addon-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.addon-info {
-    padding: 50px 16px 16px;
-    display: flex;
-    flex-direction: column;
-    height: 220px;
-    position: relative;
-}
-
-.addon-info h2 {
-    margin: 0;
-    font-size: 1.2em;
-    color: #fff;
-}
-
-.addon-info p {
-    font-size: 0.95em;
-    color: #ccc;
-    margin: 6px 0 12px;
-}
-
-.addon-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-bottom: 10px;
-}
-
-.addon-tag {
-    background: #3c3f41;
-    color: #aaa;
-    font-size: 0.75em;
-    padding: 2px 6px;
-    border-radius: 6px;
-}
-
-.flex-spacer {
-    flex-grow: 1;
-}
-
-.addon-footer-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.addon-version-author {
-    font-size: 0.8em;
-    color: #999;
-    line-height: 1.2;
-}
-
-.addon-download-btn {
-    width: 40px;
-    height: 40px;
-    background: #4CAF50;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    transition: background 0.2s ease;
-}
-
-.addon-download-btn:hover {
-    background: #45a049;
-}
-
-.addon-download-btn svg {
-    width: 24px;
-    height: 24px;
-    display: block;
-    margin: auto;
-    fill: white;
-}
 .bbh-sans-hegarty-regular {
   font-family: "BBH Sans Hegarty", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+
+/* === Addon Grid (Homepage) === */
+.addon-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.addon-card {
+  width: 300px;
+  background: #2a2d2e;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.addon-card:hover {
+  transform: translateY(-4px);
+}
+
+.addon-banner {
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+}
+
+.addon-icon {
+  position: absolute;
+  top: 80px;
+  left: 16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 4px solid #2a2d2e;
+  background: #333;
+}
+
+.addon-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.addon-info {
+  padding: 50px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+  position: relative;
+}
+
+.addon-info h2 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.addon-info p {
+  font-size: 0.95em;
+  color: #ccc;
+  margin: 6px 0 12px;
+}
+
+.addon-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.addon-tag {
+  background: #3c3f41;
+  color: #aaa;
+  font-size: 0.75em;
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.addon-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+/* Version/Author block (left) */
+.addon-version-author {
+  font-size: 0.8em;
+  color: #999;
+  line-height: 1.2;
+}
+
+/* Button group (right) */
+.addon-footer-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+/* === Homepage Buttons (Icon only) === */
+.addon-download-btn,
+.addon-info-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease;
+  padding: 0;
+}
+
+.addon-download-btn {
+  background: #4CAF50;
+}
+
+.addon-download-btn:hover {
+  background: #45a049;
+}
+
+.addon-info-btn {
+  background-color: #007bff;
+}
+
+.addon-info-btn:hover {
+  background-color: #0056b3;
+}
+
+.addon-download-btn svg,
+.addon-info-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  display: block;
+}
+
+/* === Info Page Button (Larger with text) === */
+.download-btn,
+.info-btn {
+  background-color: #4CAF50;
+  color: white;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease;
+  margin: 10px 0;
+}
+
+.download-btn:hover {
+  background-color: #45a049;
+}
+
+.info-btn {
+  background-color: #007bff;
+}
+
+.info-btn:hover {
+  background-color: #0056b3;
+}
+
+.download-btn svg,
+.info-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
 }

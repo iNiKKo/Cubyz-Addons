@@ -7,7 +7,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,116 +17,57 @@
     </h1>
   </header>
 
-  <div class="addon-container">
+  <!-- This is the container that JS will fill -->
+  <div id="addon-container" class="addon-container"></div>
 
-    <div class="addon-card">
-      <div class="addon-banner" style="background-image: url('addons/materialz/materialz_background.png');"></div>
-      <div class="addon-icon">
-        <img src="addons/materialz/materialz_icon.png" alt="Addon Icon">
-      </div>
-      <div class="addon-info">
-        <h2>Materialz</h2>
-        <p>Adds new materials: new ores, metals, alloys, cardboard, flax and dyes</p>
-        <div class="addon-tags">
-          <div class="addon-tag">Recepies</div>
-          <div class="addon-tag">Blocks</div>
-        </div>
-        <div class="flex-spacer"></div>
-        <div class="addon-footer-row">
-          <div class="addon-version-author">
-            <div>v0.1</div>
-            <div>By AmeliaCherry</div>
+  <script>
+    async function loadAddons() {
+      const container = document.getElementById('addon-container');
+      const response = await fetch('addons.json');
+      const addons = await response.json();
+
+      addons.forEach(addon => {
+        const tagsHTML = addon.tags.map(tag => `<div class="addon-tag">${tag}</div>`).join('');
+
+        const cardHTML = `
+          <div class="addon-card">
+            <div class="addon-banner" style="background-image: url('${addon.banner}');"></div>
+            <div class="addon-icon">
+              <img src="${addon.icon}" alt="Addon Icon">
+            </div>
+            <div class="addon-info">
+              <h2>${addon.name}</h2>
+              <p>${addon.description}</p>
+              <div class="addon-tags">${tagsHTML}</div>
+              <div class="flex-spacer"></div>
+              <div class="addon-footer-row">
+                <div class="addon-version-author">
+                  <div>${addon.version}</div>
+                  <div>By ${addon.author}</div>
+                </div>
+                <div class="addon-footer-buttons">
+                  <a class="addon-info-btn" href="${addon.infoPage}" title="More Info" aria-label="More Info">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm.75 15h-1.5v-6h1.5v6zm0-8h-1.5V7h1.5v2z"/>
+                    </svg>
+                  </a>
+                  <a class="addon-download-btn" href="${addon.download}" title="Download" aria-label="Download">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
-          <a class="addon-download-btn" href="addons/materialz/materialz_v0.1.zip" title="Download" aria-label="Download">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+        `;
 
-    <div class="addon-card">
-      <div class="addon-banner" style="background-image: url('addons/fancy_jungle/fancy_jungle_background.png');"></div>
-      <div class="addon-icon">
-        <img src="addons/fancy_jungle/fancy_jungle_icon.png" alt="Addon Icon">
-      </div>
-      <div class="addon-info">
-        <h2>Fancy Jungle</h2>
-        <p>Jungle improvements, additionally it contains monstera plant</p>
-        <div class="addon-tags">
-          <div class="addon-tag">Biome</div>
-          <div class="addon-tag">Improvement</div>
-        </div>
-        <div class="flex-spacer"></div>
-        <div class="addon-footer-row">
-          <div class="addon-version-author">
-            <div>v0.2</div>
-            <div>By ARGmasterPlay</div>
-          </div>
-          <a class="addon-download-btn" href="addons/fancy_jungle/fancy_jungle_v0.2.zip" title="Download" aria-label="Download">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
+        container.insertAdjacentHTML('beforeend', cardHTML);
+      });
+    }
 
-    <div class="addon-card">
-      <div class="addon-banner" style="background-image: url('addons/fancy_willows/fancy_willows_background.png');"></div>
-      <div class="addon-icon">
-        <img src="addons/fancy_willows/fancy_willows_icon.png" alt="Addon Icon">
-      </div>
-      <div class="addon-info">
-        <h2>Fancy Willows</h2>
-        <p>Few fancy willow tree models around swamp and wetlands</p>
-        <div class="addon-tags">
-          <div class="addon-tag">Biome</div>
-          <div class="addon-tag">Improvement</div>
-        </div>
-        <div class="flex-spacer"></div>
-        <div class="addon-footer-row">
-          <div class="addon-version-author">
-            <div>v0.0</div>
-            <div>By ARGmasterPlay</div>
-          </div>
-          <a class="addon-download-btn" href="addons/fancy_willows/fancy_willows_v0.0.zip" title="Download" aria-label="Download">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="addon-card">
-      <div class="addon-banner" style="background-image: url('addons/liquids!/liquids!_background.png');"></div>
-      <div class="addon-icon">
-        <img src="addons/liquids!/liquids!_icon.png" alt="Addon Icon">
-      </div>
-      <div class="addon-info">
-        <h2>Liquids!</h2>
-        <p>This mod simply adds crafting recipes allowing you to turn ice, frost, & permafrost into water/magma into lava. Enjoy your liquid builds!</p>
-        <div class="addon-tags">
-          <div class="addon-tag">Recipes</div>
-        </div>
-        <div class="flex-spacer"></div>
-        <div class="addon-footer-row">
-          <div class="addon-version-author">
-            <div>v0.0</div>
-            <div>By Baballerz</div>
-          </div>
-          <a class="addon-download-btn" href="addons/liquids!/liquids_v0.0.zip" title="Download" aria-label="Download">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-  </div>
+    window.addEventListener('DOMContentLoaded', loadAddons);
+  </script>
 
 </body>
 </html>
