@@ -22,18 +22,20 @@ body {
 }
 
 .site-title .cubyz {
-    color: #444B4F; /* dark grey */
+    color: #444B4F;
+    text-transform: uppercase;
+    letter-spacing: 4px;
 }
 
 .site-title .addon {
-    color: #4CAF50; /* your green */
+    color: #4CAF50;
     font-style: italic;
     text-shadow: 0 0 8px rgba(76, 175, 80, 0.7);
     transform: skew(-10deg);
 }
 
 .site-title .central {
-    color: #444B4F; /* dark grey */
+    color: #444B4F;
     text-transform: uppercase;
     letter-spacing: 4px;
 }
