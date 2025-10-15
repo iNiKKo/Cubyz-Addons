@@ -1,4 +1,4 @@
-# 🌐 Cubyz Addons
+# 🌐 Cubyz Addon Central
 
 **A community website for sharing and discovering addons for the game**
 
