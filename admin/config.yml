@@ -2,8 +2,9 @@ backend:
   name: github
   repo: iNiKKo/Cubyz-Addons   # your GitHub repo
   branch: main
-  base_url: https://oauth.decap.app
-  auth_endpoint: auth
+  auth_type: implicit
+  base_url: https://github.com/login/oauth/authorize
+  cms_label_prefix: "Decap CMS"
 
 media_folder: "addons/{{slug}}"
 public_folder: "/addons/{{slug}}"
