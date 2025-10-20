@@ -1,10 +1,6 @@
 backend:
-  name: github
-  repo: iNiKKo/Cubyz-Addons   
+  name: git-gateway
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-
 
 media_folder: "addons/{{slug}}"
 public_folder: "/addons/{{slug}}"
