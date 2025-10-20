@@ -1,0 +1,40 @@
+name: Build addons.json
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "addons/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Combine addon metadata
+        run: |
+          mkdir -p dist
+          echo "[" > dist/addons.json
+          first=true
+          for f in addons/*/metadata.json; do
+            if [ -f "$f" ]; then
+              if [ "$first" = true ]; then
+                first=false
+              else
+                echo "," >> dist/addons.json
+              fi
+              cat "$f" >> dist/addons.json
+            fi
+          done
+          echo "]" >> dist/addons.json
+          mv dist/addons.json addons.json
+
+      - name: Commit and push addons.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add addons.json
+          git commit -m "Auto-update addons.json" || echo "No changes to commit"
+          git push
