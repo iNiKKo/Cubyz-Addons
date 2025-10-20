@@ -1,0 +1,27 @@
+backend:
+  name: github
+  repo: iNiKKo/cubyzhub  # 🔹 replace with your actual "username/repo"
+  branch: main           # or "master" depending on your repo
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: "uploads"        # where uploaded images go
+public_folder: "/uploads"      # how they're referenced in HTML
+
+collections:
+  - name: "addons"
+    label: "Addons"
+    folder: "addons"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "ID", name: "id", widget: "string" }
+      - { label: "Name", name: "name", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - { label: "Version", name: "version", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Banner Image", name: "banner", widget: "image" }
+      - { label: "Icon Image", name: "icon", widget: "image" }
+      - { label: "Download File", name: "download", widget: "file" }
+      - { label: "Info Page", name: "infoPage", widget: "string", default: "" }
