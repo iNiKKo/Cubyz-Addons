@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 export async function handler(event, context) {
   try {
     const domain = process.env.AUTH0_DOMAIN;
@@ -22,7 +20,7 @@ export async function handler(event, context) {
 
     const text = await response.text();
 
-    // Try parsing JSON safely
+    // Try to parse JSON safely
     let data;
     try {
       data = JSON.parse(text);
