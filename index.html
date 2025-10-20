@@ -1,55 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cubyz Addon Uploader</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cubyz Addons</title>
 <style>
   body {
-    font-family: Arial, sans-serif;
     background: #0d1117;
     color: #eee;
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 2rem;
   }
-  form {
-    background: #161b22;
-    padding: 1.5rem;
-    border-radius: 10px;
-    max-width: 700px;
-    margin: auto;
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
   }
-  label { display: block; margin-top: 1rem; font-weight: bold; }
-  input, textarea, select {
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: 6px;
-    border: none;
-    background: #21262d;
-    color: #eee;
-  }
-  button {
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.2rem;
-    background: #238636;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  button:hover { background: #2ea043; }
-  .preview {
-    margin-top: 2rem;
-    padding: 1rem;
-    background: #1b1f24;
-    border-radius: 8px;
+  .addons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
   }
   .addon-card {
     background: #161b22;
     border-radius: 12px;
     overflow: hidden;
     width: 300px;
-    margin: auto;
+    display: flex;
+    flex-direction: column;
   }
   .addon-card img.banner {
     width: 100%;
@@ -60,129 +39,74 @@
     padding: 1rem;
   }
   .addon-card-content h3 {
-    margin: 0 0 0.3rem 0;
+    margin: 0 0 0.4rem 0;
   }
   .addon-card-content p {
     font-size: 0.9rem;
     color: #ccc;
-    height: 3rem;
+    height: 2.8rem;
     overflow: hidden;
   }
-  .tips {
-    background: #161b22;
-    margin-top: 2rem;
-    padding: 1rem;
-    border-radius: 10px;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+  .meta {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 0.4rem;
   }
-  .tips ul {
-    padding-left: 1.2rem;
+  .tags {
+    margin-top: 0.5rem;
+  }
+  .tag {
+    background: #30363d;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    display: inline-block;
+    margin-right: 4px;
+  }
+  .download {
+    background: #238636;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    margin-top: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+  }
+  .download:hover {
+    background: #2ea043;
   }
 </style>
 </head>
 <body>
 
-<h1>🧩 Cubyz Addon Uploader</h1>
-<p>Fill out this form to automatically upload your addon and create a pull request.</p>
-
-<form id="addonForm">
-  <label>Addon Name</label>
-  <input type="text" name="name" required />
-
-  <label>Addon ID (no spaces)</label>
-  <input type="text" name="id" required />
-
-  <label>Author</label>
-  <input type="text" name="author" required />
-
-  <label>Version</label>
-  <input type="text" name="version" value="0.0.0" />
-
-  <label>Patch Notes (for this version)</label>
-  <textarea name="patchNotes" rows="2" placeholder="Example: Initial Release"></textarea>
-
-  <label>Short Description (for card)</label>
-  <input type="text" name="description" maxlength="120" placeholder="One short sentence..." />
-
-  <label>Full Description (Markdown supported)</label>
-  <textarea name="longDescription" rows="5" required></textarea>
-
-  <label>Tags (comma separated)</label>
-  <input type="text" name="tags" placeholder="Example: biome, improvement" />
-
-  <label>Cubyz Version Compatibility</label>
-  <input type="text" name="cubyzVersion" placeholder="e.g. 0.1.5" />
-
-  <label>Addon .zip File</label>
-  <input type="file" name="addonZip" accept=".zip" required />
-
-  <label>Addon Icon (PNG, 64x64)</label>
-  <input type="file" name="icon" accept="image/png" required />
-
-  <label>Banner / Background (PNG, recommended 900x200)</label>
-  <input type="file" name="banner" accept="image/png" />
-
-  <label>Screenshots (PNG, multiple allowed)</label>
-  <input type="file" name="screenshots" accept="image/png" multiple />
-
-  <button type="submit">Upload Addon 🚀</button>
-</form>
-
-<div class="preview">
-  <h2>Live Card Preview</h2>
-  <div id="cardPreview" class="addon-card">
-    <img class="banner" src="" alt="Banner Preview">
-    <div class="addon-card-content">
-      <h3>Addon Name</h3>
-      <p>Short description will appear here.</p>
-    </div>
-  </div>
-</div>
-
-<div class="tips">
-  <h3>ℹ️ Tips before uploading</h3>
-  <ul>
-    <li>🧩 Remember your <b>Addon ID</b> — you’ll need it to update the same addon.</li>
-    <li>🖼️ Icon must be <b>64×64 PNG</b>.</li>
-    <li>🏞️ Banner recommended size: <b>900×200 PNG</b>.</li>
-    <li>📝 Full description supports <b>Markdown</b> formatting.</li>
-    <li>📸 Screenshots are optional — none will be shown if not uploaded.</li>
-  </ul>
-</div>
+<h1>🧩 Cubyz Addons</h1>
+<div class="addons" id="addonsContainer"></div>
 
 <script>
-const form = document.getElementById("addonForm");
-const preview = document.getElementById("cardPreview");
+async function loadAddons() {
+  const res = await fetch("addons/addons.json");
+  const addons = await res.json();
+  const container = document.getElementById("addonsContainer");
+  container.innerHTML = "";
 
-const bannerImg = preview.querySelector(".banner");
-const titleEl = preview.querySelector("h3");
-const descEl = preview.querySelector("p");
-
-// Live preview
-form.name.addEventListener("input", () => titleEl.textContent = form.name.value || "Addon Name");
-form.description.addEventListener("input", () => descEl.textContent = form.description.value || "Short description will appear here.");
-form.banner.addEventListener("change", e => {
-  const file = e.target.files[0];
-  if (file) bannerImg.src = URL.createObjectURL(file);
-});
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
-
-  const res = await fetch(workerUrl, { method: "POST", body: data });
-  const json = await res.json();
-
-  if (json.ok) {
-    alert("✅ Uploaded! Pull request created:\n" + json.pr_url);
-    window.open(json.pr_url, "_blank");
-  } else {
-    alert("❌ Error: " + (json.error || JSON.stringify(json)));
-  }
-});
+  addons.forEach(addon => {
+    const shortDesc = addon.description || addon.longDescription || "No description available";
+    const card = document.createElement("div");
+    card.className = "addon-card";
+    card.innerHTML = `
+      <img class="banner" src="${addon.banner}" alt="">
+      <div class="addon-card-content">
+        <h3>${addon.name}</h3>
+        <p>${shortDesc}</p>
+        <div class="tags">${(addon.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}</div>
+        <div class="meta">v${addon.version} • by ${addon.author}</div>
+        <button class="download" onclick="window.open('${addon.infoPage}', '_blank')">ℹ️ More Info</button>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+loadAddons();
 </script>
 
 </body>
