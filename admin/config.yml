@@ -1,11 +1,13 @@
 backend:
-  name: github
-  repo: iNiKKo/Cubyz-Addons
+  name: git-gateway
   branch: main
   auth_type: implicit
-  app_id: "FH9fxKN4cyQJxhgo9hKMOkeSRjFPItR3"
-  base_url: "https://dev-s5mbtwlcksziajwh.auth0.com"
-  api_root: "https://api.github.com"
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "Upload “{{path}}”"
+    deleteMedia: "Delete “{{path}}”"
 
 media_folder: "addons/{{slug}}"
 public_folder: "/addons/{{slug}}"
