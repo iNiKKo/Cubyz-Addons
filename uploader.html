@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cubyz Addon Generator</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; max-width: 800px; }
+    input, textarea { width: 100%; margin: 0.5rem 0; padding: 0.5rem; }
+    textarea { height: 100px; }
+    button { padding: 0.6rem 1rem; margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <h1>Cubyz Addon Page Generator</h1>
+  <p>Fill this out and click Generate — copy the result into a new <code>.html</code> file under <code>/addons/</code>.</p>
+
+  <form id="addonForm">
+    <label>Name</label>
+    <input id="name" required>
+
+    <label>Description</label>
+    <textarea id="description" required></textarea>
+
+    <label>Download File URL</label>
+    <input id="download" placeholder="https://..." required>
+
+    <label>Version</label>
+    <input id="version" value="v1.0">
+
+    <label>Compatibility (Cubyz Version)</label>
+    <input id="compatibility" placeholder="0.0.0 - latest">
+
+    <label>Author</label>
+    <input id="author" required>
+
+    <label>Banner Image URL</label>
+    <input id="banner">
+
+    <label>Icon Image URL</label>
+    <input id="icon">
+
+    <label>Screenshots (comma separated URLs)</label>
+    <input id="screenshots" placeholder="https://...1.png, https://...2.png">
+
+    <button type="submit">Generate Addon Page</button>
+  </form>
+
+  <h2>Generated HTML</h2>
+  <textarea id="output" rows="25" readonly></textarea>
+
+  <script>
+    document.getElementById("addonForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const description = document.getElementById("description").value.trim();
+      const download = document.getElementById("download").value.trim();
+      const version = document.getElementById("version").value.trim();
+      const compatibility = document.getElementById("compatibility").value.trim();
+      const author = document.getElementById("author").value.trim();
+      const banner = document.getElementById("banner").value.trim();
+      const icon = document.getElementById("icon").value.trim();
+      const screenshots = document.getElementById("screenshots").value
+        .split(",")
+        .map(s => s.trim())
+        .filter(s => s);
+
+      const slug = name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
+      const html = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>${name}</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1 class="site-title bbh-sans-hegarty-regular">
+        <a href="../../index.html" style="text-decoration: none; color: inherit;">
+          <span class="cubyz">CubyzHub</span>
+        </a>
+      </h1>
+    </div>
+  </header>
+
+  <div class="addon-detail-wrapper">
+    <main class="addon-detail-main">
+      <div class="addon-card-header">
+        <img src="${icon}" alt="${name} Icon" class="addon-header-image">
+        <div class="addon-header-content">
+          <h2>${name}</h2>
+          <p>${description}</p>
+          <a href="${download}" class="download-btn" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="tab-menu">
+        <button id="description-tab" class="active">Description</button>
+        <button id="versions-tab">Versions</button>
+      </div>
+
+      <section class="addon-description">
+        ${banner ? `<img src="${banner}" alt="${name} Banner" class="banner-img" />` : ""}
+        <p>${description}</p>
+        ${screenshots.length ? `
+        <h3>Screenshots</h3>
+        <div class="screenshot-grid">
+          ${screenshots.map(src => `<div class="lightbox-thumb"><img src="${src}" alt="${name} screenshot"></div>`).join("")}
+        </div>` : ""}
+      </section>
+
+      <section id="versions-section" class="addon-description" style="display: none;">
+        <h3>Addon Versions</h3>
+        <ul class="addon-versions-list">
+          <li>
+            <div class="version-info">
+              <span><strong>${version}</strong> Initial Upload</span>
+              <a href="${download}" download class="version-download-btn">⬇ Download</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="addon-sidebar">
+      <div class="sidebar-card">
+        <h4>Compatibility</h4>
+        <p><strong>Cubyz Version:</strong> ${compatibility}</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>File Information</h4>
+        <p><strong>Addon Version:</strong> ${version}</p>
+        <p><strong>Last Updated:</strong> ${new Date().toLocaleDateString()}</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>Author</h4>
+        <p><strong>${author}</strong></p>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const descriptionTab = document.getElementById('description-tab');
+    const versionsTab = document.getElementById('versions-tab');
+    const descriptionSection = document.querySelector('.addon-description');
+    const versionsSection = document.getElementById('versions-section');
+
+    descriptionTab.addEventListener('click', () => {
+      descriptionTab.classList.add('active');
+      versionsTab.classList.remove('active');
+      descriptionSection.style.display = 'block';
+      versionsSection.style.display = 'none';
+    });
+
+    versionsTab.addEventListener('click', () => {
+      versionsTab.classList.add('active');
+      descriptionTab.classList.remove('active');
+      descriptionSection.style.display = 'none';
+      versionsSection.style.display = 'block';
+    });
+  </script>
+</body>
+</html>`.trim();
+
+      document.getElementById("output").value = html;
+      alert("✅ Done! Save this as addons/" + slug + ".html");
+    });
+  </script>
+</body>
+</html>
