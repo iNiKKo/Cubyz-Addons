@@ -1,10 +1,11 @@
 backend:
   name: github
-  repo: iNiKKo/Cubyz-Addons   # your GitHub repo
+  repo: iNiKKo/Cubyz-Addons   # your repository
   branch: main
   auth_type: implicit
-  base_url: https://github.com/login/oauth/authorize
-  cms_label_prefix: "Decap CMS"
+  app_id: Ov23li9jckmuRjbsP0sO
+  base_url: https://auth.cubyz.pages.dev
+  auth_endpoint: /callback
 
 media_folder: "addons/{{slug}}"
 public_folder: "/addons/{{slug}}"
