@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: iNiKKo/Cubyz-Addons   # your repo name
+  repo: iNiKKo/Cubyz-Addons   # your GitHub repo
   branch: main
-  base_url: https://decap-oauth.netlify.app   # ← free Decap auth proxy
+  base_url: https://oauth.decap.app
   auth_endpoint: auth
 
 media_folder: "addons/{{slug}}"
