@@ -1,81 +1,162 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Upload Addon</title>
-  <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 2rem; }
-    input, textarea { width: 100%; margin: 0.5rem 0; padding: .5rem; }
-    label { font-weight: 600; margin-top: .5rem; display:block; }
-    button { padding: .6rem 1rem; }
-    #result { margin-top: 1rem; white-space: pre-wrap; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cubyz Addon Uploader</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #0d1117;
+    color: #eee;
+    padding: 2rem;
+  }
+  form {
+    background: #161b22;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 700px;
+    margin: auto;
+  }
+  label { display: block; margin-top: 1rem; font-weight: bold; }
+  input, textarea, select {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: none;
+    background: #21262d;
+    color: #eee;
+  }
+  button {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    background: #238636;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover { background: #2ea043; }
+  .preview {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #1b1f24;
+    border-radius: 8px;
+  }
+  .addon-card {
+    background: #161b22;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 300px;
+  }
+  .addon-card img.banner {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+  }
+  .addon-card-content {
+    padding: 1rem;
+  }
+  .addon-card-content h3 {
+    margin: 0 0 0.3rem 0;
+  }
+  .addon-card-content p {
+    font-size: 0.9rem;
+    color: #ccc;
+    height: 3rem;
+    overflow: hidden;
+  }
+</style>
 </head>
 <body>
-  <h1>Upload Addon</h1>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <label>ID (folder name, lowercase, no spaces)</label>
-    <input name="id" required placeholder="extrabiomes">
 
-    <label>Name</label>
-    <input name="name" required placeholder="Extra Biomes">
+<h1>🧩 Cubyz Addon Uploader</h1>
+<p>Fill out this form to automatically upload your addon and create a pull request.</p>
 
-    <label>Author</label>
-    <input name="author" required placeholder="austrianworm">
+<form id="addonForm">
+  <label>Addon Name</label>
+  <input type="text" name="name" required />
 
-    <label>Version (v0.0.0)</label>
-    <input name="version" required placeholder="v0.0.0">
+  <label>Addon ID (no spaces)</label>
+  <input type="text" name="id" required />
 
-    <label>Description</label>
-    <textarea name="description" rows="3" required></textarea>
+  <label>Author</label>
+  <input type="text" name="author" required />
 
-    <label>Tags (comma separated)</label>
-    <input name="tags" placeholder="Recipes, Blocks, Items">
+  <label>Version</label>
+  <input type="text" name="version" value="0.0.0" />
 
-    <label>Cubyz Compatibility</label>
-    <input name="cubyzVersion" placeholder="0.0.0 - 0.15.0-dev.1034+bd97b6618">
+  <label>Short Description (for card)</label>
+  <input type="text" name="shortDescription" maxlength="120" placeholder="One short sentence..." />
 
-    <label>Addon ZIP (required)</label>
-    <input type="file" name="addonZip" accept=".zip" required>
+  <label>Full Description (for info page)</label>
+  <textarea name="description" rows="4" required></textarea>
 
-    <label>Banner Image (optional)</label>
-    <input type="file" name="banner" accept="image/*">
+  <label>Tags (comma separated)</label>
+  <input type="text" name="tags" placeholder="Example: biome, improvement" />
 
-    <label>Icon Image (optional)</label>
-    <input type="file" name="icon" accept="image/*">
+  <label>Cubyz Version Compatibility</label>
+  <input type="text" name="cubyzVersion" placeholder="e.g. 0.1.5" />
 
-    <label>Screenshots (optional, multiple)</label>
-    <input type="file" name="screenshots" accept="image/*" multiple>
+  <label>Addon .zip File</label>
+  <input type="file" name="addonZip" accept=".zip" required />
 
-    <button type="submit">Upload & Create PR</button>
-  </form>
+  <label>Addon Icon (PNG)</label>
+  <input type="file" name="icon" accept="image/png" required />
 
-  <div id="result"></div>
+  <label>Banner / Background (PNG)</label>
+  <input type="file" name="banner" accept="image/png" />
 
-  <script>
-    const WORKER_URL = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/"; // <-- change this
+  <label>Screenshots (PNG, multiple allowed)</label>
+  <input type="file" name="screenshots" accept="image/png" multiple />
 
-    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const data = new FormData(form);
+  <button type="submit">Upload Addon 🚀</button>
+</form>
 
-      // show spinner
-      const result = document.getElementById("result");
-      result.textContent = "Uploading... please wait.";
+<div class="preview">
+  <h2>Live Card Preview</h2>
+  <div id="cardPreview" class="addon-card">
+    <img class="banner" src="" alt="Banner Preview">
+    <div class="addon-card-content">
+      <h3>Addon Name</h3>
+      <p>Short description will appear here.</p>
+    </div>
+  </div>
+</div>
 
-      try {
-        const resp = await fetch(WORKER_URL, { method: "POST", body: data });
-        const json = await resp.json();
-        if (resp.ok && json.pr_url) {
-          result.innerHTML = `✅ Pull request created: <a href="${json.pr_url}" target="_blank">${json.pr_url}</a>`;
-        } else {
-          result.textContent = "Error: " + JSON.stringify(json);
-        }
-      } catch (err) {
-        result.textContent = "Network or server error: " + err.message;
-      }
-    });
-  </script>
+<script>
+const form = document.getElementById("addonForm");
+const preview = document.getElementById("cardPreview");
+
+const bannerImg = preview.querySelector(".banner");
+const titleEl = preview.querySelector("h3");
+const descEl = preview.querySelector("p");
+
+// live preview updates
+form.name.addEventListener("input", () => titleEl.textContent = form.name.value || "Addon Name");
+form.shortDescription.addEventListener("input", () => descEl.textContent = form.shortDescription.value || "Short description will appear here.");
+form.banner.addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (file) bannerImg.src = URL.createObjectURL(file);
+});
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  const workerUrl = "https://YOUR_WORKER_URL_HERE"; // ⬅️ replace with your Cloudflare Worker URL
+
+  const res = await fetch(workerUrl, { method: "POST", body: data });
+  const json = await res.json();
+
+  if (json.ok) {
+    alert("✅ Uploaded! Pull request created:\n" + json.pr_url);
+    window.open(json.pr_url, "_blank");
+  } else {
+    alert("❌ Error: " + (json.error || JSON.stringify(json)));
+  }
+});
+</script>
+
 </body>
 </html>
