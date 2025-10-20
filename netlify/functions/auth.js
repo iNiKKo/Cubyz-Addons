@@ -1,39 +1,62 @@
-// netlify/functions/auth.js
+import fetch from 'node-fetch';
 
 export async function handler(event, context) {
   try {
-    const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_AUDIENCE } = process.env;
+    const domain = process.env.AUTH0_DOMAIN;
+    const clientId = process.env.AUTH0_CLIENT_ID;
+    const clientSecret = process.env.AUTH0_CLIENT_SECRET;
+    const audience = process.env.AUTH0_AUDIENCE;
 
-    // Use native fetch (Node 18+)
-    const response = await fetch(`https://${AUTH0_DOMAIN}/oauth/token`, {
+    const url = `https://${domain}/oauth/token`;
+
+    const response = await fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
-        client_id: AUTH0_CLIENT_ID,
-        client_secret: AUTH0_CLIENT_SECRET,
-        audience: AUTH0_AUDIENCE,
+        client_id: clientId,
+        client_secret: clientSecret,
+        audience: audience,
         grant_type: 'client_credentials',
       }),
     });
 
-    const data = await response.json();
+    const text = await response.text();
+
+    // Try parsing JSON safely
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({
+          error: 'Invalid JSON from Auth0',
+          raw: text,
+        }),
+      };
+    }
 
     if (!response.ok) {
-      throw new Error(data.error_description || data.error || 'Auth0 token request failed');
+      return {
+        statusCode: response.status,
+        body: JSON.stringify({
+          error: data.error || 'Auth0 error',
+          description: data.error_description || text,
+        }),
+      };
     }
 
     return {
       statusCode: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        access_token: data.access_token,
+        token_type: data.token_type,
+      }),
     };
-  } catch (err) {
+  } catch (error) {
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: err.message }),
+      body: JSON.stringify({ error: error.message }),
     };
   }
 }
