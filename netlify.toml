@@ -1,0 +1,6 @@
+[build]
+  publish = "."             # your site files are served from the repo root
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
