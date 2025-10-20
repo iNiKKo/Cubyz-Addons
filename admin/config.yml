@@ -2,8 +2,8 @@ backend:
   name: github
   repo: iNiKKo/Cubyz-Addons
   branch: main
-  base_url: "https://cubyz.netlify.app/.netlify/functions"
-  auth_endpoint: "auth"
+  auth_type: implicit
+  auth_endpoint: "/.netlify/functions/auth"
 
 media_folder: "addons/{{slug}}"
 public_folder: "/addons/{{slug}}"
