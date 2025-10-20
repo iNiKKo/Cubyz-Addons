@@ -1,12 +1,10 @@
 // netlify/functions/auth.js
-import fetch from 'node-fetch';
 
 export async function handler(event, context) {
   try {
-    // Get Auth0 credentials from environment variables
     const { AUTH0_DOMAIN, AUTH0_CLIENT_ID, AUTH0_CLIENT_SECRET, AUTH0_AUDIENCE } = process.env;
 
-    // Request an access token from Auth0
+    // Use native fetch (Node 18+)
     const response = await fetch(`https://${AUTH0_DOMAIN}/oauth/token`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -21,7 +19,7 @@ export async function handler(event, context) {
     const data = await response.json();
 
     if (!response.ok) {
-      throw new Error(data.error_description || 'Auth0 token request failed');
+      throw new Error(data.error_description || data.error || 'Auth0 token request failed');
     }
 
     return {
