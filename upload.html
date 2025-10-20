@@ -144,7 +144,7 @@ form.banner.addEventListener("change", e => {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = new FormData(form);
-  const workerUrl = "https://YOUR_WORKER_URL_HERE"; // ⬅️ replace with your Cloudflare Worker URL
+  const workerUrl = "https://https://cubyz-addon-uploader.jankajnicolas.workers.dev/"; // yes i know my real name
 
   const res = await fetch(workerUrl, { method: "POST", body: data });
   const json = await res.json();
