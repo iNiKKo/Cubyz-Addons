@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>industrial_plasteel</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1 class="site-title bbh-sans-hegarty-regular">
+        <a href="../../index.html" style="text-decoration: none; color: inherit;">
+          <span class="cubyz">CubyzHub</span>
+        </a>
+      </h1>
+    </div>
+  </header>
+
+  <div class="addon-detail-wrapper">
+    <main class="addon-detail-main">
+      <div class="addon-card-header" style="display:flex;align-items:center;gap:1rem;">
+        <img src="../../addons/industrial_plasteel/industrial_plasteel_icon.png" alt="industrial_plasteel Icon" class="addon-header-image" style="width:80px;height:80px;border-radius:12px;">
+        <div class="addon-header-content">
+          <h2 style="margin-bottom:0.4rem;">industrial_plasteel</h2>
+          <p style="font-size:0.9rem;color:#ccc;max-width:420px;">A extension to Materialz that adds a new metal called Industrial Plasteel</p>
+          <a href="../../addons/industrial_plasteel/industrial_plasteel_v0.0.0.zip" class="download-btn" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <div class="tab-menu">
+        <button id="description-tab" class="active">Description</button>
+        <button id="versions-tab">Versions</button>
+      </div>
+
+      <section class="addon-description">
+        <img src="../../addons/industrial_plasteel/industrial_plasteel_background.png" alt="industrial_plasteel Banner" class="banner-img" />
+        <p>Industrial Plasteel is a durable but tricky metal to work with, perfect for those who like trying new combinations for tools!
+
+Recipes:
+
+Sulfur, Zinc Ingot -> 2 Zinc Sulfide
+4 Aluminum Ingot, 3 Coal -> 7 Aluminum Carbide
+7 Aluminum Carbide, 2 Zinc Sulfide -> Unstable Compound
+2 Steel Ingot, Unstable Compound -> 2 Plasteel Compound 
+4 Sulfur, Plasteel Compound -> Industrial Plasteel</p>
+        <h3>Screenshots</h3><div class="screenshot-grid"><div class="lightbox-thumb"><img src="../../addons/industrial_plasteel/industrial_plasteel_screenshot_1.png" alt="industrial_plasteel screenshot 1" /></div></div>
+      </section>
+
+      <section id="versions-section" class="addon-description" style="display: none;">
+        <h3>Addon Versions</h3>
+        <ul class="addon-versions-list">
+          <li>
+            <div class="version-info">
+              <span><strong>v0.0.0</strong> Initial Upload</span>
+              <a href="../../addons/industrial_plasteel/industrial_plasteel_v0.0.0.zip" download class="version-download-btn">⬇ Download</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <aside class="addon-sidebar">
+      <div class="sidebar-card">
+        <h4>Compatibility</h4>
+        <p><strong>Cubyz Version:</strong> 0.0.0</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>File Information</h4>
+        <p><strong>Addon Version:</strong> v0.0.0</p>
+        <p><strong>Last Updated:</strong> 10/20/2025</p>
+      </div>
+      <div class="sidebar-card">
+        <h4>Author</h4>
+        <p><strong>Immortal SpellDagger</strong></p>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const descriptionTab = document.getElementById('description-tab');
+    const versionsTab = document.getElementById('versions-tab');
+    const descriptionSection = document.querySelector('.addon-description');
+    const versionsSection = document.getElementById('versions-section');
+
+    descriptionTab.addEventListener('click', () => {
+      descriptionTab.classList.add('active');
+      versionsTab.classList.remove('active');
+      descriptionSection.style.display = 'block';
+      versionsSection.style.display = 'none';
+    });
+
+    versionsTab.addEventListener('click', () => {
+      versionsTab.classList.add('active');
+      descriptionTab.classList.remove('active');
+      descriptionSection.style.display = 'none';
+      versionsSection.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
