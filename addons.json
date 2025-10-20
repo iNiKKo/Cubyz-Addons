@@ -1,4 +1,16 @@
 [
+    {
+    "id": "extrabiomes",
+    "name": "Extra Biomes",
+    "description": "New biomes, blocks and items",
+    "tags": ["Recipes", "Blocks","Items"],
+    "version": "v0.0",
+    "author": "austrianworm",
+    "banner": "addons/extrabiomes/extrabiomes_background.png",
+    "icon": "addons/extrabiomes/extrabiomes_icon.png",
+    "download": "addons/extrabiomes/extrabiomes_v0.0.zip",
+    "infoPage": "addons/extrabiomes/extrabiomes-info.html"
+  },
   {
     "id": "materialz",
     "name": "Materialz",
@@ -47,4 +59,6 @@
     "download": "addons/liquids!/liquids_v0.0.zip",
     "infoPage": "addons/liquids!/liquids-info.html"
   }
+  
 ]
+
