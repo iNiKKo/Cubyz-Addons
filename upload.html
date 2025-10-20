@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Upload Addon</title>
+  <style>
+    body { font-family: sans-serif; max-width: 800px; margin: 2rem; }
+    input, textarea { width: 100%; margin: 0.5rem 0; padding: .5rem; }
+    label { font-weight: 600; margin-top: .5rem; display:block; }
+    button { padding: .6rem 1rem; }
+    #result { margin-top: 1rem; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Upload Addon</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label>ID (folder name, lowercase, no spaces)</label>
+    <input name="id" required placeholder="extrabiomes">
+
+    <label>Name</label>
+    <input name="name" required placeholder="Extra Biomes">
+
+    <label>Author</label>
+    <input name="author" required placeholder="austrianworm">
+
+    <label>Version (v0.0.0)</label>
+    <input name="version" required placeholder="v0.0.0">
+
+    <label>Description</label>
+    <textarea name="description" rows="3" required></textarea>
+
+    <label>Tags (comma separated)</label>
+    <input name="tags" placeholder="Recipes, Blocks, Items">
+
+    <label>Cubyz Compatibility</label>
+    <input name="cubyzVersion" placeholder="0.0.0 - 0.15.0-dev.1034+bd97b6618">
+
+    <label>Addon ZIP (required)</label>
+    <input type="file" name="addonZip" accept=".zip" required>
+
+    <label>Banner Image (optional)</label>
+    <input type="file" name="banner" accept="image/*">
+
+    <label>Icon Image (optional)</label>
+    <input type="file" name="icon" accept="image/*">
+
+    <label>Screenshots (optional, multiple)</label>
+    <input type="file" name="screenshots" accept="image/*" multiple>
+
+    <button type="submit">Upload & Create PR</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    const WORKER_URL = "https://YOUR_WORKER_SUBDOMAIN.workers.dev"; // <-- change this
+
+    document.getElementById("uploadForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const data = new FormData(form);
+
+      // show spinner
+      const result = document.getElementById("result");
+      result.textContent = "Uploading... please wait.";
+
+      try {
+        const resp = await fetch(WORKER_URL, { method: "POST", body: data });
+        const json = await resp.json();
+        if (resp.ok && json.pr_url) {
+          result.innerHTML = `✅ Pull request created: <a href="${json.pr_url}" target="_blank">${json.pr_url}</a>`;
+        } else {
+          result.textContent = "Error: " + JSON.stringify(json);
+        }
+      } catch (err) {
+        result.textContent = "Network or server error: " + err.message;
+      }
+    });
+  </script>
+</body>
+</html>
