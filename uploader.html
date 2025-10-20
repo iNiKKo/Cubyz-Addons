@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Cubyz Addon Generator</title>
+  <title>Cubyz Addon Page Generator</title>
   <style>
     body { font-family: sans-serif; margin: 2rem; max-width: 800px; }
     input, textarea { width: 100%; margin: 0.5rem 0; padding: 0.5rem; }
     textarea { height: 100px; }
-    button { padding: 0.6rem 1rem; margin-top: 1rem; }
+    button { padding: 0.6rem 1rem; margin-top: 1rem; cursor: pointer; }
   </style>
 </head>
 <body>
   <h1>Cubyz Addon Page Generator</h1>
   <p>Fill this out and click Generate — copy the result into a new <code>.html</code> file under <code>/addons/</code>.</p>
 
-  <form id="addonForm">
+  <form id="addonForm" onsubmit="return false;">
     <label>Name</label>
     <input id="name" required>
 
@@ -42,16 +42,14 @@
     <label>Screenshots (comma separated URLs)</label>
     <input id="screenshots" placeholder="https://...1.png, https://...2.png">
 
-    <button type="submit">Generate Addon Page</button>
+    <button id="generateBtn" type="button">Generate Addon Page</button>
   </form>
 
   <h2>Generated HTML</h2>
   <textarea id="output" rows="25" readonly></textarea>
 
   <script>
-    document.getElementById("addonForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-
+    document.getElementById("generateBtn").addEventListener("click", () => {
       const name = document.getElementById("name").value.trim();
       const description = document.getElementById("description").value.trim();
       const download = document.getElementById("download").value.trim();
@@ -64,6 +62,11 @@
         .split(",")
         .map(s => s.trim())
         .filter(s => s);
+
+      if (!name || !description || !download || !author) {
+        alert("Please fill out all required fields.");
+        return;
+      }
 
       const slug = name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 
@@ -91,7 +94,7 @@
   <div class="addon-detail-wrapper">
     <main class="addon-detail-main">
       <div class="addon-card-header">
-        <img src="${icon}" alt="${name} Icon" class="addon-header-image">
+        ${icon ? `<img src="${icon}" alt="${name} Icon" class="addon-header-image">` : ""}
         <div class="addon-header-content">
           <h2>${name}</h2>
           <p>${description}</p>
@@ -168,7 +171,7 @@
 </html>`.trim();
 
       document.getElementById("output").value = html;
-      alert("✅ Done! Save this as addons/" + slug + ".html");
+      alert("✅ Done! Copy this into a new file: addons/" + slug + ".html");
     });
   </script>
 </body>
