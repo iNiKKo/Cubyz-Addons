@@ -1,262 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Cubyz Addon Uploader</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    background: #0d1117;
-    color: #eee;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 2rem;
-  }
-
-  h1 {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  form {
-    background: #161b22;
-    padding: 1.5rem;
-    border-radius: 10px;
-    max-width: 700px;
-    width: 100%;
-    box-shadow: 0 0 10px #0003;
-  }
-
-  label { display: block; margin-top: 1rem; font-weight: bold; }
-  input, textarea {
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: 6px;
-    border: none;
-    background: #21262d;
-    color: #eee;
-  }
-  button {
-    margin-top: 1.5rem;
-    padding: 0.8rem 1.2rem;
-    background: #238636;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  button:hover { background: #2ea043; }
-
-  /* Preview section */
-  .preview {
-    margin-top: 2rem;
-    text-align: center;
-  }
-
-  .addon-card {
-    background: #161b22;
-    border-radius: 12px;
-    overflow: hidden;
-    width: 320px;
-    margin: 1rem auto;
-    box-shadow: 0 0 10px #0005;
-  }
-
-  .addon-card img.banner {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-  }
-
-  .addon-card-content {
-    padding: 1rem;
-    position: relative;
-  }
-
-  .addon-header {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .addon-header img.icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 6px;
-    background: #21262d;
-    object-fit: cover;
-  }
-
-  .addon-header h3 {
-    margin: 0;
-    font-size: 1.1rem;
-  }
-
-  .addon-card-content p {
-    font-size: 0.9rem;
-    color: #ccc;
-    margin: 0.4rem 0 0.6rem;
-    height: 2.8rem;
-    overflow: hidden;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .tag {
-    background: #30363d;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-  }
-
-  .addon-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.8rem;
-    color: #aaa;
-  }
-
-  .download-btn {
-    background: #238636;
-    border: none;
-    border-radius: 6px;
-    padding: 0.3rem 0.6rem;
-    cursor: pointer;
-  }
-
-  .download-btn:hover { background: #2ea043; }
+  body { font-family: Arial, sans-serif; background:#0d1117; color:#eee; display:flex; flex-direction:column; align-items:center; padding:24px; }
+  h1 { margin-bottom:8px; }
+  .container { display:flex; gap:24px; width:100%; max-width:1100px; }
+  form { background:#161b22; padding:16px; border-radius:10px; width:520px; box-shadow: 0 6px 20px rgba(0,0,0,0.4); }
+  label { display:block; margin-top:10px; font-weight:bold; font-size:0.9rem; }
+  input, textarea { width:100%; padding:8px; border-radius:6px; border:none; background:#21262d; color:#eee; box-sizing:border-box; }
+  button { margin-top:14px; padding:10px 14px; background:#238636; color:#fff; border:none; border-radius:8px; cursor:pointer; font-weight:700;}
+  .preview { width:320px; }
+  .addon-card { background:#161b22; border-radius:12px; overflow:hidden; width:320px; box-shadow:0 6px 18px rgba(0,0,0,0.5); }
+  .addon-card img.banner { width:100%; height:150px; object-fit:cover; display:block; }
+  .addon-card-content { padding:12px; }
+  .addon-header { display:flex; gap:10px; align-items:center; }
+  .addon-header img.icon { width:48px; height:48px; border-radius:10px; background:#222; object-fit:cover; }
+  .addon-header h3 { margin:0; font-size:1.1rem; text-transform:none; }
+  .author { display:block; font-size:0.85rem; color:#bfc7c1; margin-top:2px; }
+  .shortDesc { margin:8px 0; color:#cfcfcf; font-size:0.95rem; line-height:1.2; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; text-overflow:ellipsis; }
+  .tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:6px; }
+  .tag { background:#2e3438; padding:4px 8px; border-radius:6px; font-size:0.78rem; color:#d5d9d6;}
+  .footer { display:flex; justify-content:space-between; align-items:center; color:#9aa1a0; font-size:0.85rem; }
+  .download-btn { background:#238636; color:white; border:none; padding:6px 8px; border-radius:8px; cursor:pointer; }
+  @media (max-width: 980px) { .container { flex-direction:column; align-items:center; } form{width:100%;} .preview{width:100%; display:flex; justify-content:center;} }
 </style>
 </head>
 <body>
-
 <h1>🧩 Cubyz Addon Uploader</h1>
-<p>Fill out this form to automatically upload your addon and create a pull request.</p>
+<p>Fill the form — a PR will be created with your addon files and page.</p>
 
-<form id="addonForm">
-  <label>Addon Name</label>
-  <input type="text" name="name" required />
+<div class="container">
+  <form id="addonForm">
+    <label>Addon Name</label>
+    <input name="name" required />
 
-  <label>Addon ID (no spaces)</label>
-  <input type="text" name="id" required />
+    <label>Addon ID (folder name, no spaces)</label>
+    <input name="id" required />
 
-  <label>Author</label>
-  <input type="text" name="author" required />
+    <label>Author</label>
+    <input name="author" required />
 
-  <label>Version</label>
-  <input type="text" name="version" value="0.0.0" />
+    <label>Version (e.g. 0.0.0)</label>
+    <input name="version" value="0.0.0" />
 
-  <label>Short Description (for card)</label>
-  <input type="text" name="shortDescription" maxlength="120" placeholder="One short sentence..." />
+    <label>Short Description (for card, max 120 chars)</label>
+    <input name="shortDescription" maxlength="120" placeholder="One short sentence..." />
 
-  <label>Full Description (for info page)</label>
-  <textarea name="description" rows="4" required></textarea>
+    <label>Full Description (Markdown allowed)</label>
+    <textarea name="description" rows="6" required placeholder="Write the long description in Markdown — headings, lists, **bold**, `code`, and links work."></textarea>
 
-  <label>Tags (comma separated)</label>
-  <input type="text" name="tags" placeholder="Example: Biome, Improvement" />
+    <label>Patch Notes (Markdown — optional)</label>
+    <textarea name="patchNotes" rows="3" placeholder="Changelog / patch notes for this version"></textarea>
 
-  <label>Cubyz Version Compatibility</label>
-  <input type="text" name="cubyzVersion" placeholder="e.g. 0.1.5" />
+    <label>Tags (comma separated)</label>
+    <input name="tags" placeholder="Biome, Improvement" />
 
-  <label>Addon .zip File</label>
-  <input type="file" name="addonZip" accept=".zip" required />
+    <label>Cubyz Version Compatibility</label>
+    <input name="cubyzVersion" placeholder="e.g. 0.1.5" />
 
-  <label>Addon Icon (PNG)</label>
-  <input type="file" name="icon" accept="image/png" required />
+    <label>Addon .zip</label>
+    <input name="addonZip" type="file" accept=".zip" required />
 
-  <label>Banner / Background (PNG)</label>
-  <input type="file" name="banner" accept="image/png" />
+    <label>Icon (PNG)</label>
+    <input name="icon" type="file" accept="image/png" required />
 
-  <label>Screenshots (PNG, multiple allowed)</label>
-  <input type="file" name="screenshots" accept="image/png" multiple />
+    <label>Banner (PNG)</label>
+    <input name="banner" type="file" accept="image/png" />
 
-  <button type="submit">Upload Addon 🚀</button>
-</form>
+    <label>Screenshots (PNG, multiple)</label>
+    <input name="screenshots" type="file" accept="image/png" multiple />
 
-<div class="preview">
-  <h2>Live Card Preview</h2>
-  <div id="cardPreview" class="addon-card">
-    <img class="banner" src="" alt="Banner Preview" />
-    <div class="addon-card-content">
-      <div class="addon-header">
-        <img class="icon" src="" alt="Icon" />
-        <div>
-          <h3>Addon Name</h3>
-          <small class="author">By Author</small>
+    <button type="submit">Upload Addon 🚀</button>
+    <p id="status" style="margin-top:8px;color:#c9d1d0"></p>
+  </form>
+
+  <div class="preview">
+    <h3 style="text-align:center; margin-bottom:6px;">Live Preview</h3>
+    <div id="cardPreview" class="addon-card">
+      <img class="banner" src="" alt="banner" />
+      <div class="addon-card-content">
+        <div class="addon-header">
+          <img class="icon" src="" alt="icon" />
+          <div>
+            <h3 class="title">Addon Name</h3>
+            <span class="author">By Author</span>
+          </div>
         </div>
-      </div>
-      <p class="shortDesc">Short description will appear here.</p>
-      <div class="tags"></div>
-      <div class="addon-footer">
-        <span class="version">v0.0.0</span>
-        <button class="download-btn">⬇</button>
+        <div class="shortDesc">Short description will appear here and will be clamped to three lines so it doesn't push buttons away.</div>
+        <div class="tags"></div>
+        <div class="footer">
+          <span class="version">v0.0.0</span>
+          <button class="download-btn">⬇</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-const form = document.getElementById("addonForm");
-const preview = document.getElementById("cardPreview");
-const bannerImg = preview.querySelector(".banner");
-const iconImg = preview.querySelector(".icon");
-const titleEl = preview.querySelector("h3");
-const authorEl = preview.querySelector(".author");
-const descEl = preview.querySelector(".shortDesc");
-const tagsEl = preview.querySelector(".tags");
-const versionEl = preview.querySelector(".version");
+const form = document.getElementById('addonForm');
+const status = document.getElementById('status');
 
-// Live preview updates
-form.name.addEventListener("input", () => titleEl.textContent = form.name.value || "Addon Name");
-form.author.addEventListener("input", () => authorEl.textContent = form.author.value ? "By " + form.author.value : "By Author");
-form.shortDescription.addEventListener("input", () => descEl.textContent = form.shortDescription.value || "Short description will appear here.");
-form.version.addEventListener("input", () => versionEl.textContent = "v" + (form.version.value || "0.0.0"));
-form.tags.addEventListener("input", () => {
+const preview = document.getElementById('cardPreview');
+const bannerImg = preview.querySelector('.banner');
+const iconImg = preview.querySelector('.icon');
+const titleEl = preview.querySelector('.title');
+const authorEl = preview.querySelector('.author');
+const descEl = preview.querySelector('.shortDesc');
+const tagsEl = preview.querySelector('.tags');
+const versionEl = preview.querySelector('.version');
+
+function setTagsFromString(s) {
   tagsEl.innerHTML = "";
-  form.tags.value.split(",").map(t => t.trim()).filter(Boolean).forEach(tag => {
-    const el = document.createElement("span");
-    el.className = "tag";
+  (s || "").split(',').map(t => t.trim()).filter(Boolean).forEach(tag => {
+    const el = document.createElement('span');
+    el.className = 'tag';
     el.textContent = tag;
     tagsEl.appendChild(el);
   });
+}
+
+// Live preview
+form.name.addEventListener('input', () => titleEl.textContent = form.name.value || "Addon Name");
+form.author.addEventListener('input', () => authorEl.textContent = form.author.value ? "By " + form.author.value : "By Author");
+form.shortDescription.addEventListener('input', () => {
+  const txt = form.shortDescription.value || "";
+  descEl.textContent = txt || "Short description will appear here and will be clamped to three lines so it doesn't push buttons away.";
 });
-form.banner.addEventListener("change", e => {
-  const file = e.target.files[0];
-  if (file) bannerImg.src = URL.createObjectURL(file);
+form.version.addEventListener('input', () => {
+  const v = form.version.value || "0.0.0";
+  versionEl.textContent = "v" + v.replace(/^v?/,'');
 });
-form.icon.addEventListener("change", e => {
-  const file = e.target.files[0];
-  if (file) iconImg.src = URL.createObjectURL(file);
+form.tags.addEventListener('input', () => setTagsFromString(form.tags.value));
+
+form.banner.addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (f) bannerImg.src = URL.createObjectURL(f);
+});
+form.icon.addEventListener('change', e => {
+  const f = e.target.files[0];
+  if (f) iconImg.src = URL.createObjectURL(f);
 });
 
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
-  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/"; // your worker URL
+form.addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  status.textContent = "Uploading...";
+  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/"; // <-- REPLACE with your worker URL
+
+  const fd = new FormData(form);
 
   try {
-    const res = await fetch(workerUrl, { method: "POST", body: data });
+    const res = await fetch(workerUrl, { method: 'POST', body: fd });
     const json = await res.json();
-
     if (json.ok) {
-      alert("✅ Uploaded! Pull request created:\n" + json.pr_url);
+      status.textContent = "PR created: " + json.pr_url;
       window.open(json.pr_url, "_blank");
     } else {
-      alert("❌ Error: " + (json.error || JSON.stringify(json)));
+      status.textContent = "Error: " + (json.error || JSON.stringify(json));
     }
   } catch (err) {
-    alert("❌ Upload failed: " + err.message);
+    status.textContent = "Upload failed: " + err.message;
   }
 });
 </script>
-
 </body>
 </html>
