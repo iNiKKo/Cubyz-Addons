@@ -12,59 +12,61 @@
 </head>
 <body>
   <h1>Cubyz Addon Page Generator</h1>
-  <p>Fill this out and click Generate — copy the result into a new <code>.html</code> file under <code>/addons/</code>.</p>
+  <p>Fill this out and click Generate — it will download the HTML file automatically.</p>
 
-  <form id="addonForm" onsubmit="return false;">
-    <label>Name</label>
-    <input id="name" required>
+  <!-- ❌ No form tag — we’ll handle everything manually -->
+  <label>Name</label>
+  <input id="name" required>
 
-    <label>Description</label>
-    <textarea id="description" required></textarea>
+  <label>Description</label>
+  <textarea id="description" required></textarea>
 
-    <label>Download File URL</label>
-    <input id="download" placeholder="https://..." required>
+  <label>Download File URL</label>
+  <input id="download" placeholder="https://..." required>
 
-    <label>Version</label>
-    <input id="version" value="v1.0">
+  <label>Version</label>
+  <input id="version" value="v1.0">
 
-    <label>Compatibility (Cubyz Version)</label>
-    <input id="compatibility" placeholder="0.0.0 - latest">
+  <label>Compatibility (Cubyz Version)</label>
+  <input id="compatibility" placeholder="0.0.0 - latest">
 
-    <label>Author</label>
-    <input id="author" required>
+  <label>Author</label>
+  <input id="author" required>
 
-    <label>Banner Image URL</label>
-    <input id="banner">
+  <label>Banner Image URL</label>
+  <input id="banner">
 
-    <label>Icon Image URL</label>
-    <input id="icon">
+  <label>Icon Image URL</label>
+  <input id="icon">
 
-    <label>Screenshots (comma separated URLs)</label>
-    <input id="screenshots" placeholder="https://...1.png, https://...2.png">
+  <label>Screenshots (comma separated URLs)</label>
+  <input id="screenshots" placeholder="https://...1.png, https://...2.png">
 
-    <button id="generateBtn" type="button">Generate Addon Page</button>
-  </form>
+  <button id="generateBtn">Generate Addon Page</button>
 
   <h2>Generated HTML</h2>
   <textarea id="output" rows="25" readonly></textarea>
 
   <script>
-    document.getElementById("generateBtn").addEventListener("click", () => {
-      const name = document.getElementById("name").value.trim();
-      const description = document.getElementById("description").value.trim();
-      const download = document.getElementById("download").value.trim();
-      const version = document.getElementById("version").value.trim();
-      const compatibility = document.getElementById("compatibility").value.trim();
-      const author = document.getElementById("author").value.trim();
-      const banner = document.getElementById("banner").value.trim();
-      const icon = document.getElementById("icon").value.trim();
-      const screenshots = document.getElementById("screenshots").value
+    document.getElementById("generateBtn").addEventListener("click", (e) => {
+      e.preventDefault(); // stop any default behavior (refresh, etc.)
+
+      const get = id => document.getElementById(id).value.trim();
+      const name = get("name");
+      const description = get("description");
+      const download = get("download");
+      const version = get("version") || "v1.0";
+      const compatibility = get("compatibility") || "latest";
+      const author = get("author");
+      const banner = get("banner");
+      const icon = get("icon");
+      const screenshots = get("screenshots")
         .split(",")
         .map(s => s.trim())
         .filter(s => s);
 
       if (!name || !description || !download || !author) {
-        alert("Please fill out all required fields.");
+        alert("⚠️ Please fill out all required fields.");
         return;
       }
 
@@ -152,14 +154,12 @@
     const versionsTab = document.getElementById('versions-tab');
     const descriptionSection = document.querySelector('.addon-description');
     const versionsSection = document.getElementById('versions-section');
-
     descriptionTab.addEventListener('click', () => {
       descriptionTab.classList.add('active');
       versionsTab.classList.remove('active');
       descriptionSection.style.display = 'block';
       versionsSection.style.display = 'none';
     });
-
     versionsTab.addEventListener('click', () => {
       versionsTab.classList.add('active');
       descriptionTab.classList.remove('active');
@@ -170,8 +170,15 @@
 </body>
 </html>`.trim();
 
+      // Show the result
       document.getElementById("output").value = html;
-      alert("✅ Done! Copy this into a new file: addons/" + slug + ".html");
+
+      // Download file automatically
+      const blob = new Blob([html], { type: "text/html" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = slug + ".html";
+      link.click();
     });
   </script>
 </body>
