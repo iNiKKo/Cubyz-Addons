@@ -73,5 +73,31 @@
     "icon": "addons/liquids!/liquids!_icon.png",
     "download": "addons/liquids!/liquids_v0.0.zip",
     "infoPage": "addons/liquids!/liquids-info.html"
+  },
+  {
+    "id": "industrial_plasteel",
+    "name": "Industrial Plasteel",
+    "shortDescription": "A extension to Materialz that adds a new metal called Industrial Plasteel",
+    "description": "Industrial Plasteel is a durable but tricky metal to work with, perfect for those who like trying new combinations for tools!\r\n\r\nRecipes:\r\n\r\nSulfur, Zinc Ingot -> 2 Zinc Sulfide\r\n4 Aluminum Ingot, 3 Coal -> 7 Aluminum Carbide\r\n7 Aluminum Carbide, 2 Zinc Sulfide -> Unstable Compound\r\n2 Steel Ingot, Unstable Compound -> 2 Plasteel Compound \r\n4 Sulfur, Plasteel Compound -> Industrial Plasteel",
+    "tags": [
+      "Recipe",
+      "Material"
+    ],
+    "version": "v0.0.0",
+    "author": "Immortal SpellDagger",
+    "banner": "addons/industrial_plasteel/industrial_plasteel_background.png",
+    "icon": "addons/industrial_plasteel/industrial_plasteel_icon.png",
+    "download": "addons/industrial_plasteel/industrial_plasteel_v0.0.0.zip",
+    "infoPage": "addons/industrial_plasteel/industrial_plasteel-info.html",
+    "versions": [
+      {
+        "version": "v0.0.0",
+        "download": "addons/industrial_plasteel/industrial_plasteel_v0.0.0.zip",
+        "patchNotes": "Initial Release",
+        "title": "Upload",
+        "date": "2025-10-20T23:40:56.940Z"
+      }
+    ],
+    "patchNotes": "Initial Release"
   }
 ]
