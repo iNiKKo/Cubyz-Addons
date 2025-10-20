@@ -1,13 +1,10 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: iNiKKo/Cubyz-Addons
   branch: main
   auth_type: implicit
-  commit_messages:
-    create: "Create {{collection}} “{{slug}}”"
-    update: "Update {{collection}} “{{slug}}”"
-    delete: "Delete {{collection}} “{{slug}}”"
-    uploadMedia: "Upload “{{path}}”"
-    deleteMedia: "Delete “{{path}}”"
+  base_url: "https://cubyz.netlify.app"
+  auth_endpoint: "api/auth"
 
 media_folder: "addons/{{slug}}"
 public_folder: "/addons/{{slug}}"
