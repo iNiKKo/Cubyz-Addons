@@ -9,17 +9,28 @@
     font-family: Arial, sans-serif;
     background: #0d1117;
     color: #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 2rem;
   }
+
+  h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
   form {
     background: #161b22;
     padding: 1.5rem;
     border-radius: 10px;
     max-width: 700px;
-    margin: auto;
+    width: 100%;
+    box-shadow: 0 0 10px #0003;
   }
+
   label { display: block; margin-top: 1rem; font-weight: bold; }
-  input, textarea, select {
+  input, textarea {
     width: 100%;
     padding: 0.6rem;
     border-radius: 6px;
@@ -38,35 +49,91 @@
     cursor: pointer;
   }
   button:hover { background: #2ea043; }
+
+  /* Preview section */
   .preview {
     margin-top: 2rem;
-    padding: 1rem;
-    background: #1b1f24;
-    border-radius: 8px;
+    text-align: center;
   }
+
   .addon-card {
     background: #161b22;
     border-radius: 12px;
     overflow: hidden;
-    width: 300px;
+    width: 320px;
+    margin: 1rem auto;
+    box-shadow: 0 0 10px #0005;
   }
+
   .addon-card img.banner {
     width: 100%;
-    height: 140px;
+    height: 150px;
     object-fit: cover;
   }
+
   .addon-card-content {
     padding: 1rem;
+    position: relative;
   }
-  .addon-card-content h3 {
-    margin: 0 0 0.3rem 0;
+
+  .addon-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
   }
+
+  .addon-header img.icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 6px;
+    background: #21262d;
+    object-fit: cover;
+  }
+
+  .addon-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
   .addon-card-content p {
     font-size: 0.9rem;
     color: #ccc;
-    height: 3rem;
+    margin: 0.4rem 0 0.6rem;
+    height: 2.8rem;
     overflow: hidden;
   }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .tag {
+    background: #30363d;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+  }
+
+  .addon-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+
+  .download-btn {
+    background: #238636;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+  }
+
+  .download-btn:hover { background: #2ea043; }
 </style>
 </head>
 <body>
@@ -94,7 +161,7 @@
   <textarea name="description" rows="4" required></textarea>
 
   <label>Tags (comma separated)</label>
-  <input type="text" name="tags" placeholder="Example: biome, improvement" />
+  <input type="text" name="tags" placeholder="Example: Biome, Improvement" />
 
   <label>Cubyz Version Compatibility</label>
   <input type="text" name="cubyzVersion" placeholder="e.g. 0.1.5" />
@@ -117,10 +184,21 @@
 <div class="preview">
   <h2>Live Card Preview</h2>
   <div id="cardPreview" class="addon-card">
-    <img class="banner" src="" alt="Banner Preview">
+    <img class="banner" src="" alt="Banner Preview" />
     <div class="addon-card-content">
-      <h3>Addon Name</h3>
-      <p>Short description will appear here.</p>
+      <div class="addon-header">
+        <img class="icon" src="" alt="Icon" />
+        <div>
+          <h3>Addon Name</h3>
+          <small class="author">By Author</small>
+        </div>
+      </div>
+      <p class="shortDesc">Short description will appear here.</p>
+      <div class="tags"></div>
+      <div class="addon-footer">
+        <span class="version">v0.0.0</span>
+        <button class="download-btn">⬇</button>
+      </div>
     </div>
   </div>
 </div>
@@ -128,32 +206,54 @@
 <script>
 const form = document.getElementById("addonForm");
 const preview = document.getElementById("cardPreview");
-
 const bannerImg = preview.querySelector(".banner");
+const iconImg = preview.querySelector(".icon");
 const titleEl = preview.querySelector("h3");
-const descEl = preview.querySelector("p");
+const authorEl = preview.querySelector(".author");
+const descEl = preview.querySelector(".shortDesc");
+const tagsEl = preview.querySelector(".tags");
+const versionEl = preview.querySelector(".version");
 
-// live preview updates
+// Live preview updates
 form.name.addEventListener("input", () => titleEl.textContent = form.name.value || "Addon Name");
+form.author.addEventListener("input", () => authorEl.textContent = form.author.value ? "By " + form.author.value : "By Author");
 form.shortDescription.addEventListener("input", () => descEl.textContent = form.shortDescription.value || "Short description will appear here.");
+form.version.addEventListener("input", () => versionEl.textContent = "v" + (form.version.value || "0.0.0"));
+form.tags.addEventListener("input", () => {
+  tagsEl.innerHTML = "";
+  form.tags.value.split(",").map(t => t.trim()).filter(Boolean).forEach(tag => {
+    const el = document.createElement("span");
+    el.className = "tag";
+    el.textContent = tag;
+    tagsEl.appendChild(el);
+  });
+});
 form.banner.addEventListener("change", e => {
   const file = e.target.files[0];
   if (file) bannerImg.src = URL.createObjectURL(file);
+});
+form.icon.addEventListener("change", e => {
+  const file = e.target.files[0];
+  if (file) iconImg.src = URL.createObjectURL(file);
 });
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const data = new FormData(form);
-  const workerUrl = "https://https://cubyz-addon-uploader.jankajnicolas.workers.dev/"; // yes i know my real name
+  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/"; // your worker URL
 
-  const res = await fetch(workerUrl, { method: "POST", body: data });
-  const json = await res.json();
+  try {
+    const res = await fetch(workerUrl, { method: "POST", body: data });
+    const json = await res.json();
 
-  if (json.ok) {
-    alert("✅ Uploaded! Pull request created:\n" + json.pr_url);
-    window.open(json.pr_url, "_blank");
-  } else {
-    alert("❌ Error: " + (json.error || JSON.stringify(json)));
+    if (json.ok) {
+      alert("✅ Uploaded! Pull request created:\n" + json.pr_url);
+      window.open(json.pr_url, "_blank");
+    } else {
+      alert("❌ Error: " + (json.error || JSON.stringify(json)));
+    }
+  } catch (err) {
+    alert("❌ Upload failed: " + err.message);
   }
 });
 </script>
