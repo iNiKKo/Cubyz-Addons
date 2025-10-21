@@ -15,43 +15,45 @@
   small { color: #777; display: block; margin-top: 0.2rem; }
   button { margin-top: 1.5rem; padding: 0.8rem 1.2rem; background: #238636; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
   button:hover { background: #2ea043; }
+  #fetchBtn:disabled { background: #30363d; cursor: not-allowed; }
 </style>
 </head>
 <body>
 
 <h1>Cubyz Addon Uploader</h1>
-<p>Automatically upload your addon and create a pull request.</p>
+<p>Automatically upload or update your addon and create a pull request.</p>
 
 <form id="addonForm">
-  <label>Addon Name</label>
-  <input type="text" name="name" required />
-
   <label>Addon ID (no spaces)</label>
-  <input type="text" name="id" required />
+  <input type="text" name="id" id="addonId" required />
+  <button type="button" id="fetchBtn" disabled>Fetch Addon Info</button>
+
+  <label>Addon Name</label>
+  <input type="text" name="name" />
 
   <label>Author</label>
-  <input type="text" name="author" required />
+  <input type="text" name="author" />
 
   <label>Version</label>
-  <input type="text" name="version" value="0.0.0" required />
+  <input type="text" name="version" value="0.0.0" />
 
   <label>Short Description</label>
-  <input type="text" name="shortDescription" id="shortDescription" maxlength="120" required />
+  <input type="text" name="shortDescription" id="shortDescription" maxlength="120" />
 
   <label>Long Description</label>
-  <textarea name="longDescription" rows="5" required></textarea>
+  <textarea name="longDescription" rows="5"></textarea>
 
   <label>Addon Icon (PNG)</label>
-  <input type="file" name="icon" accept="image/png" required />
+  <input type="file" name="icon" accept="image/png" />
 
   <label>Banner / Background (PNG)</label>
   <input type="file" name="banner" accept="image/png" />
 
   <label>Addon .zip File</label>
-  <input type="file" name="addonZip" accept=".zip" required />
+  <input type="file" name="addonZip" accept=".zip" id="addonZip" />
 
   <label>Patch Notes</label>
-  <textarea name="patchNotes" rows="2"></textarea>
+  <textarea name="patchNotes" id="patchNotes" rows="2" disabled></textarea>
 
   <label>Tags (comma separated)</label>
   <input type="text" name="tags" />
@@ -59,17 +61,53 @@
   <label>Cubyz Version Compatibility</label>
   <input type="text" name="cubyzVersion" />
 
-  <button type="submit">Upload Addon</button>
+  <button type="submit">Upload / Update Addon</button>
 </form>
 
 <script>
 const form = document.getElementById("addonForm");
+const addonIdInput = document.getElementById("addonId");
+const fetchBtn = document.getElementById("fetchBtn");
+const patchNotesField = document.getElementById("patchNotes");
+const addonZipInput = document.getElementById("addonZip");
+const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
 
+// enable fetch button only when addonId filled
+addonIdInput.addEventListener("input", () => {
+  fetchBtn.disabled = !addonIdInput.value.trim();
+});
+
+// disable patch notes unless zip chosen
+addonZipInput.addEventListener("change", () => {
+  patchNotesField.disabled = !addonZipInput.files.length;
+});
+
+// Fetch existing addon data
+fetchBtn.addEventListener("click", async () => {
+  const id = addonIdInput.value.trim();
+  if (!id) return alert("Enter an addon ID first!");
+  try {
+    const res = await fetch(workerUrl + "?id=" + encodeURIComponent(id));
+    if (!res.ok) throw new Error("Fetch failed: " + res.status);
+    const data = await res.json();
+    if (!data.ok) return alert("Addon not found!");
+    const addon = data.addon;
+    console.log("Fetched addon:", addon);
+    for (const [k,v] of Object.entries(addon)) {
+      if (form.elements[k] && form.elements[k].type !== "file") {
+        form.elements[k].value = Array.isArray(v) ? v.join(", ") : v;
+      }
+    }
+    alert("Fetched addon info successfully! You can now edit and re-upload.");
+  } catch (err) {
+    alert("❌ Error fetching addon info: " + err.message);
+  }
+});
+
+// Submit upload
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
-  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
-
   console.log("Submitting addon with fields:");
   for (const [key, val] of data.entries()) {
     console.log(key, val instanceof File ? `[File: ${val.name}]` : val);
@@ -79,14 +117,9 @@ form.addEventListener("submit", async e => {
     const res = await fetch(workerUrl, { method: "POST", body: data });
     const text = await res.text();
     console.log("Worker response text:", text);
-
     let json;
-    try {
-      json = JSON.parse(text);
-    } catch {
-      alert("❌ Worker returned non-JSON response:\n" + text.slice(0, 200));
-      return;
-    }
+    try { json = JSON.parse(text); } 
+    catch { return alert("❌ Non-JSON response:\n" + text.slice(0,200)); }
 
     if (json.ok) {
       alert("✅ Uploaded successfully! Pull request:\n" + json.pr_url);
@@ -95,10 +128,9 @@ form.addEventListener("submit", async e => {
       alert("❌ Error: " + (json.error || JSON.stringify(json)));
     }
   } catch (err) {
-    alert("Network or server error: " + err.message);
+    alert("Network/server error: " + err.message);
   }
 });
 </script>
-
 </body>
 </html>
