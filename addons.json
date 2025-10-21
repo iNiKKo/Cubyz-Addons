@@ -1,28 +1,27 @@
 [
   {
-    "id": "materialz",
-    "name": "Materialz",
-    "description": "Materialz adds new materials including ores, metals, alloys, cardboard, flax, and dyes.",
-    "longDescription": "### Features\r\n\r\n#### 8 New Metals\r\n- Tin  \r\n- Aluminum  \r\n- Zinc  \r\n- Lead  \r\n- Steel  \r\n- Rose Gold  \r\n- Brass  \r\n- Bronze  \r\n\r\n#### 4 New Ores\r\n- Bauxite (Aluminum)  \r\n- Galena (Lead)  \r\n- Zinc  \r\n- Cassiterite (Tin)  \r\n\r\n#### New Materials\r\n- Wood Pulp  \r\n- Cardboard (+ Cardboard Blocks)  \r\n\r\n**Note:** All new metals + cardboard can be used for tool crafting.\r\n\r\n#### New Systems and Items\r\n- Dyeing system using 20 new dye items  \r\n- New plant: Flax  \r\n- New items: Flax fiber, Ash, Lime, Alkali, Crude Glass Mix  \r\n- Cloth crafting using dyes and flax fiber  \r\n- Nugget crafting (for all ingots in addon + vanilla)  \r\n- Craftable colored glass  \r\n- New block: Crude Glass",
+    "id": "liquids!",
+    "name": "Liquids!",
+    "description": "New crafting recipes allowing you to turn ice, frost, & permafrost into water/magma into lava.",
+    "longDescription": "No more information known...",
     "tags": [
-      "Recipe",
-      "Material"
+      "Recipe"
     ],
-    "version": "0.0.2",
-    "author": "Amelia_Cherry",
+    "version": "0.0.0",
+    "author": "Baballerz",
     "cubyzVersion": "0.0.0",
-    "banner": "addons/materialz/materialz_background.png",
-    "icon": "addons/materialz/materialz_icon.png",
-    "download": "addons/materialz/materialz_v0.0.2.zip",
-    "infoPage": "addons/materialz/materialz-info.html",
+    "banner": "addons/liquids!/liquids!_background.png",
+    "icon": "addons/liquids!/liquids!_icon.png",
+    "download": "addons/liquids!/liquids!_v0.0.0.zip",
+    "infoPage": "addons/liquids!/liquids!-info.html",
     "screenshots": [
-      "addons/materialz/screenshot_1.png",
-      "addons/materialz/screenshot_2.png"
+      "addons/liquids!/screenshot_1.png",
+      "addons/liquids!/screenshot_2.png"
     ],
     "patchNotes": [
       {
-        "version": "0.0.2",
-        "notes": "Glass Update"
+        "version": "0.0.0",
+        "notes": "Initial Release"
       }
     ],
     "updated": "21 October 2025"
