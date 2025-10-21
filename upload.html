@@ -237,7 +237,7 @@ updatePreview();
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
-  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
+  const workerUrl = "https://api.addons.ashframe.net/";
 
   try {
     const res = await fetch(workerUrl, { method: "POST", body: data });
