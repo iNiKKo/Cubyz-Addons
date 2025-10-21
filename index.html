@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cubyz Addons</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=BBH+Sans+Hegarty&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <header class="site-header">
-    <h1 class="site-title bbh-sans-hegarty-regular">
-      <span class="cubyz">CubyzHub</span>
-    </h1>
+    <header class="site-header">
+      <h1 class="site-title bbh-sans-hegarty-regular">
+        <span class="cubyz">CubyzHub</span>
+      </h1>
+      <a href="upload.html" class="upload-btn" title="Upload Addon" aria-label="Upload Addon">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="24" height="24">
+          <path d="M5 20h14v-2H5v2zm7-18v12l5-5h-3V4h-4v5H7l5 5z" />
+        </svg>
+      </a>
+    </header>
   </header>
 
   <div id="addon-container" class="addon-container"></div>
@@ -27,7 +36,7 @@
         const addons = await response.json();
 
         addons.forEach(addon => {
-          // Ensure backward safety if older addons exist
+
           const shortDesc = addon.description || "No description provided.";
           const tagsHTML = (addon.tags || []).map(tag => `<div class="addon-tag">${tag}</div>`).join('');
 
@@ -62,7 +71,7 @@
           container.insertAdjacentHTML('beforeend', cardHTML);
         });
 
-        // Card interactions
+
         container.querySelectorAll('.addon-card').forEach(card => {
           card.addEventListener('click', e => {
             if (e.target.closest('.addon-download-btn')) return;
@@ -87,4 +96,5 @@
   </script>
 
 </body>
+
 </html>

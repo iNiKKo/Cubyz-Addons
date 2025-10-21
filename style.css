@@ -221,7 +221,7 @@ body {
   height: 20px;
   fill: white;
 }
-/* === Addon Detail Page Layout === */
+
 .addon-detail-wrapper {
   display: flex;
   flex-direction: row;
@@ -231,14 +231,14 @@ body {
   gap: 24px;
 }
 
-/* Main content column */
+
 .addon-detail-main {
   flex: 3;
   display: flex;
   flex-direction: column;
 }
 
-/* Sidebar column */
+
 .addon-sidebar {
   flex: 1;
   display: flex;
@@ -246,7 +246,7 @@ body {
   gap: 16px;
 }
 
-/* === Top header section (icon, name, download) === */
+
 .addon-detail-header {
   display: flex;
   align-items: center;
@@ -290,7 +290,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* === Tab Navigation (Fake tabs for now) === */
+
 .tab-menu {
   display: flex;
   gap: 10px;
@@ -313,7 +313,7 @@ body {
   color: #000;
 }
 
-/* === Content Sections === */
+
 .addon-description {
   background: #1e1e1e;
   padding: 20px;
@@ -335,14 +335,14 @@ body {
   color: #ddd;
 }
 
-/* Banner + Screenshots */
+
 .banner-img, .screenshot-img {
   width: 100%;
   border-radius: 10px;
   margin: 16px 0;
 }
 
-/* === RIGHT SIDE Sidebar Cards === */
+
 .sidebar-card {
   background: #1e1e1e;
   padding: 16px;
@@ -366,7 +366,7 @@ body {
   padding-left: 20px;
   margin: 0;
 }
-/* === Compact Addon Card Header (e.g. like Modrinth) === */
+
 .addon-card-header {
   display: flex;
   align-items: center;
@@ -435,7 +435,7 @@ body {
   transition: transform 0.2s ease;
 }
 
-/* Lightbox overlay */
+
 .lightbox {
   display: none;
   position: fixed;
@@ -457,7 +457,7 @@ body {
   box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
   cursor: zoom-out;
 }
-/* Versions list layout */
+
 .addon-versions-list {
   list-style: none;
   padding: 0;
@@ -468,7 +468,7 @@ body {
   margin-bottom: 12px;
 }
 
-/* Flex row for version text + download button */
+
 .version-info {
   display: flex;
   justify-content: space-between;
@@ -479,7 +479,7 @@ body {
   border: 1px solid #2a2a2a;
 }
 
-/* Compact button for versions */
+
 .version-download-btn {
   background-color: #4CAF50;
   color: white;
@@ -493,4 +493,28 @@ body {
 
 .version-download-btn:hover {
   background-color: #45a049;
+}
+.upload-btn {
+  background: #4CAF50;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.upload-btn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.upload-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
 }

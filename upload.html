@@ -44,7 +44,7 @@
     margin-top: 0.3rem;
   }
   small {
-    color: #777;
+    color: #a9e77683;
     display: block;
     margin-top: 0.2rem;
   }
@@ -127,13 +127,14 @@
 
 <h1>Cubyz Addon Uploader</h1>
 <p>Automatically upload your addon and create a pull request.</p>
+<p>Early Alpha — may contain bugs and currently does not support addon updates.</p>
 
 <form id="addonForm">
   <h2 class="section-title">Addon Info</h2>
   <label>Addon Name</label>
   <input type="text" name="name" required />
 
-  <label>Addon ID (no spaces)</label>
+  <label>Addon ID (no spaces, use under_score)</label>
   <input type="text" name="id" required />
   <small>Used for updates — keep this the same for later versions.</small>
 
@@ -142,10 +143,11 @@
 
   <label>Version</label>
   <input type="text" name="version" value="0.0.0" />
+  <small>Addon version should follow the semantic versioning format (e.g., 0.0.0).</small>
 
   <h2 class="section-title">Descriptions</h2>
   <label>Short Description (for main card)</label>
-  <!-- ✅ fixed: name must match Worker -->
+
   <input type="text" name="shortDescription" id="shortDescription" maxlength="120" required placeholder="One short sentence..." />
   <small>Appears on the main page card and info page header (max 120 characters).</small>
   <small id="charCount">0 / 120</small>
@@ -161,7 +163,7 @@
 
   <label>Banner / Background (PNG)</label>
   <input type="file" name="banner" accept="image/png" />
-  <small>Recommended size: about 800×200px.</small>
+  <small>Recommended size: about 800×200px but other supported.</small>
 
   <label>Screenshots (PNG, multiple allowed)</label>
   <input type="file" name="screenshots" accept="image/png" multiple />
@@ -173,6 +175,7 @@
 
   <label>Cubyz Version Compatibility</label>
   <input type="text" name="cubyzVersion" placeholder="e.g. 0.1.5" />
+  <small>The versions this addon is compatible with.</small>
 
   <h2 class="section-title">Upload Options</h2>
   <label>Addon .zip File</label>
@@ -197,12 +200,11 @@
   </div>
 
   <ul class="tips">
-    <li>📌 <strong>Addon ID</strong> must stay the same for updates.</li>
-    <li>🖼️ Icon: 64×64px PNG.</li>
-    <li>🌄 Banner: around 800×200px PNG.</li>
-    <li>📝 Short description → for main page cards.</li>
-    <li>📖 Long description → Markdown supported on info page.</li>
-    <li>⚙️ Versions auto-increment for existing Addon IDs.</li>
+    <li><strong>Addon ID</strong> must stay the same for updates.</li>
+    <li>Icon: 64×64px PNG.</li>
+    <li>Banner: around 800×200px PNG.</li>
+    <li>Short description → for main page cards.</li>
+    <li>Long description → Markdown supported on info page.</li>
   </ul>
 </div>
 
@@ -245,7 +247,7 @@ updatePreview();
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
-  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
+  const workerUrl = "https://api.addons.ashframe.net/";
 
   try {
     const res = await fetch(workerUrl, { method: "POST", body: data });
