@@ -73,31 +73,5 @@
     "icon": "addons/liquids!/liquids!_icon.png",
     "download": "addons/liquids!/liquids_v0.0.zip",
     "infoPage": "addons/liquids!/liquids-info.html"
-  },
-  {
-    "id": "industrial_plasteel",
-    "name": "Industrial Plasteel",
-    "shortDescription": "A extension to Materialz that adds a new metal called Industrial Plasteel.",
-    "description": "A extension to Materialz that adds a new metal called Industrial Plasteel.",
-    "tags": [
-      "Recipe",
-      "Material"
-    ],
-    "version": "v0.0.0",
-    "author": "Immortal SpellDagger",
-    "banner": "addons/industrial_plasteel/industrial_plasteel_background.png",
-    "icon": "addons/industrial_plasteel/industrial_plasteel_icon.png",
-    "download": "addons/industrial_plasteel/industrial_plasteel_v0.0.0.zip",
-    "infoPage": "addons/industrial_plasteel/industrial_plasteel-info.html",
-    "versions": [
-      {
-        "version": "v0.0.0",
-        "download": "addons/industrial_plasteel/industrial_plasteel_v0.0.0.zip",
-        "patchNotes": "Initial Release",
-        "title": "Upload",
-        "date": "2025-10-21T00:56:26.492Z"
-      }
-    ],
-    "patchNotes": "Initial Release"
   }
 ]
