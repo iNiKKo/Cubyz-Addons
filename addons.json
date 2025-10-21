@@ -2,116 +2,76 @@
   {
     "id": "extrabiomes",
     "name": "Extra Biomes",
-    "shortDescription": "New biomes, blocks and items",
-    "description": "No long description provided yet.",
-    "tags": ["Recipes", "Blocks", "Items"],
+    "description": "New biomes, blocks and items",
+    "tags": [
+      "Recipes",
+      "Blocks",
+      "Items"
+    ],
     "version": "v0.0",
     "author": "austrianworm",
     "banner": "addons/extrabiomes/extrabiomes_background.png",
     "icon": "addons/extrabiomes/extrabiomes_icon.png",
     "download": "addons/extrabiomes/extrabiomes_v0.0.zip",
-    "infoPage": "addons/extrabiomes/extrabiomes-info.html",
-    "versions": [
-      {
-        "version": "v0.0",
-        "download": "addons/extrabiomes/extrabiomes_v0.0.zip",
-        "patchNotes": "Initial release",
-        "title": "Upload",
-        "date": "2025-10-21T00:00:00.000Z"
-      }
-    ],
-    "patchNotes": "Initial release"
+    "infoPage": "addons/extrabiomes/extrabiomes-info.html"
   },
   {
     "id": "materialz",
     "name": "Materialz",
-    "shortDescription": "Adds new materials: new ores, metals, alloys, cardboard, flax and dyes",
-    "description": "No long description provided yet.",
-    "tags": ["Recipes", "Blocks"],
+    "description": "Adds new materials: new ores, metals, alloys, cardboard, flax and dyes",
+    "tags": [
+      "Recipes",
+      "Blocks"
+    ],
     "version": "v0.2",
     "author": "AmeliaCherry",
     "banner": "addons/materialz/materialz_background.png",
     "icon": "addons/materialz/materialz_icon.png",
     "download": "addons/materialz/materialz_v0.2.zip",
-    "infoPage": "addons/materialz/materialz-info.html",
-    "versions": [
-      {
-        "version": "v0.2",
-        "download": "addons/materialz/materialz_v0.2.zip",
-        "patchNotes": "Initial release",
-        "title": "Upload",
-        "date": "2025-10-21T00:00:00.000Z"
-      }
-    ],
-    "patchNotes": "Initial release"
+    "infoPage": "addons/materialz/materialz-info.html"
   },
   {
     "id": "fancy_jungle",
     "name": "Fancy Jungle",
-    "shortDescription": "Jungle improvements, additionally it contains monstera plant",
-    "description": "No long description provided yet.",
-    "tags": ["Biome", "Improvement"],
+    "description": "Jungle improvements, additionally it contains monstera plant",
+    "tags": [
+      "Biome",
+      "Improvement"
+    ],
     "version": "v0.2",
     "author": "ARGmasterPlay",
     "banner": "addons/fancy_jungle/fancy_jungle_background.png",
     "icon": "addons/fancy_jungle/fancy_jungle_icon.png",
     "download": "addons/fancy_jungle/fancy_jungle_v0.2.zip",
-    "infoPage": "addons/fancy_jungle/fancy_jungle-info.html",
-    "versions": [
-      {
-        "version": "v0.2",
-        "download": "addons/fancy_jungle/fancy_jungle_v0.2.zip",
-        "patchNotes": "Initial release",
-        "title": "Upload",
-        "date": "2025-10-21T00:00:00.000Z"
-      }
-    ],
-    "patchNotes": "Initial release"
+    "infoPage": "addons/fancy_jungle/fancy_jungle-info.html"
   },
   {
     "id": "fancy_willows",
     "name": "Fancy Willows",
-    "shortDescription": "Few fancy willow tree models around swamp and wetlands",
-    "description": "No long description provided yet.",
-    "tags": ["Biome", "Improvement"],
+    "description": "Few fancy willow tree models around swamp and wetlands",
+    "tags": [
+      "Biome",
+      "Improvement"
+    ],
     "version": "v0.0",
     "author": "ARGmasterPlay",
     "banner": "addons/fancy_willows/fancy_willows_background.png",
     "icon": "addons/fancy_willows/fancy_willows_icon.png",
     "download": "addons/fancy_willows/fancy_willows_v0.0.zip",
-    "infoPage": "addons/fancy_willows/fancy_willows-info.html",
-    "versions": [
-      {
-        "version": "v0.0",
-        "download": "addons/fancy_willows/fancy_willows_v0.0.zip",
-        "patchNotes": "Initial release",
-        "title": "Upload",
-        "date": "2025-10-21T00:00:00.000Z"
-      }
-    ],
-    "patchNotes": "Initial release"
+    "infoPage": "addons/fancy_willows/fancy_willows-info.html"
   },
   {
     "id": "liquids",
     "name": "Liquids!",
-    "shortDescription": "This mod adds recipes to turn ice, frost & permafrost into water, and magma into lava.",
-    "description": "No long description provided yet.",
-    "tags": ["Recipes"],
+    "description": "This mod simply adds crafting recipes allowing you to turn ice, frost, & permafrost into water/magma into lava. Enjoy your liquid builds!",
+    "tags": [
+      "Recipes"
+    ],
     "version": "v0.0",
     "author": "Baballerz",
     "banner": "addons/liquids!/liquids!_background.png",
     "icon": "addons/liquids!/liquids!_icon.png",
     "download": "addons/liquids!/liquids_v0.0.zip",
-    "infoPage": "addons/liquids!/liquids-info.html",
-    "versions": [
-      {
-        "version": "v0.0",
-        "download": "addons/liquids!/liquids_v0.0.zip",
-        "patchNotes": "Initial release",
-        "title": "Upload",
-        "date": "2025-10-21T00:00:00.000Z"
-      }
-    ],
-    "patchNotes": "Initial release"
+    "infoPage": "addons/liquids!/liquids-info.html"
   }
 ]
