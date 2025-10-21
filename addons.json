@@ -25,5 +25,36 @@
       }
     ],
     "updated": "21 October 2025"
+  },
+  {
+    "id": "extra_biomes",
+    "name": "Extra Biomes",
+    "description": "New biomes, blocks and items.",
+    "longDescription": "**Current State**\r\n\r\n**Main Biomes**\r\n- **Snowy Crimsonforest**  \r\n  `/tp extrabiomes:snowy_crimsonforest`\r\n\r\n**Sub-Biomes**\r\n- Ice Lake  \r\n- High Snowy Crimsonforest  \r\n\r\n**Blocks**\r\n- Crimson Needles  \r\n- Leafy Crimson Needles  \r\n- Red Fern  \r\n\r\n**Items**\r\n- **Pine Cone** — dropped by Crimson Needles  \r\n- **Golden Pine Cone** — *can’t be obtained yet*  \r\n- **Blueberries** — *can’t be obtained yet*  \r\n\r\n**Crafting Recipes**\r\n- `4× Pine Cones → 1× Resin`  \r\n\r\n**Structures**\r\n- Various **tree structures** for Snowy Crimsonforest  \r\n- Various **stone structures** for Snowy Crimsonforest\r\n- **Outpost tower** structure for Snowy Crimsonforest",
+    "tags": [
+      "Biome",
+      "Blocks",
+      "Items"
+    ],
+    "version": "0.0.0",
+    "author": "austrianworm",
+    "cubyzVersion": "0.0.0 - 0.15.0-dev.1034+bd97b6618",
+    "banner": "addons/extra_biomes/extra_biomes_background.png",
+    "icon": "addons/extra_biomes/extra_biomes_icon.png",
+    "download": "addons/extra_biomes/extra_biomes_v0.0.0.zip",
+    "infoPage": "addons/extra_biomes/extra_biomes-info.html",
+    "screenshots": [
+      "addons/extra_biomes/screenshot_1.png",
+      "addons/extra_biomes/screenshot_2.png",
+      "addons/extra_biomes/screenshot_3.png",
+      "addons/extra_biomes/screenshot_4.png"
+    ],
+    "patchNotes": [
+      {
+        "version": "0.0.0",
+        "notes": "Initial Release"
+      }
+    ],
+    "updated": "21 October 2025"
   }
 ]
