@@ -1,1 +1,26 @@
-
+[
+  {
+    "id": "amazing_rice",
+    "name": "AMAZING RICE",
+    "description": "this is the short desc",
+    "longDescription": "wow the long des goes here\r\n\r\nand wow its in markdown tis so epic",
+    "tags": [
+      "recipe"
+    ],
+    "version": "0.0.0",
+    "author": "not amazing rice",
+    "cubyzVersion": "0.0.0",
+    "banner": "addons/amazing_rice/amazing_rice_background.png",
+    "icon": "addons/amazing_rice/amazing_rice_icon.png",
+    "download": "addons/amazing_rice/amazing_rice_v0.0.0.zip",
+    "infoPage": "addons/amazing_rice/amazing_rice-info.html",
+    "screenshots": [],
+    "patchNotes": [
+      {
+        "version": "0.0.0",
+        "notes": "exampless"
+      }
+    ],
+    "updated": "21 October 2025"
+  }
+]
