@@ -1,1 +1,29 @@
-
+[
+  {
+    "id": "test_addon",
+    "name": "TEST ADDON",
+    "description": "this is the short desc",
+    "longDescription": "this is the amazing long markdown text descirption\r\n\r\nwow look at this\r\n\r\nits in markdown that's so epic",
+    "tags": [
+      "hello",
+      "tag",
+      "goes",
+      "here"
+    ],
+    "version": "6.6.6",
+    "author": "niko",
+    "cubyzVersion": "9.9.9",
+    "banner": "addons/test_addon/test_addon_background.png",
+    "icon": "addons/test_addon/test_addon_icon.png",
+    "download": "addons/test_addon/test_addon_v6.6.6.zip",
+    "infoPage": "addons/test_addon/test_addon-info.html",
+    "screenshots": [],
+    "patchNotes": [
+      {
+        "version": "6.6.6",
+        "notes": "here are the epic patch notes"
+      }
+    ],
+    "updated": "21 October 2025"
+  }
+]
