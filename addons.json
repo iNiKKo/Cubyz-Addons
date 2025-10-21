@@ -46,5 +46,33 @@
       }
     ],
     "updated": "21 October 2025"
+  },
+  {
+    "id": "final_test",
+    "name": "Final test",
+    "description": "estttte",
+    "longDescription": "dasfsgsg",
+    "tags": [
+      "Recipe",
+      "Material"
+    ],
+    "version": "0.0.0",
+    "author": "test",
+    "cubyzVersion": "0.0.0",
+    "banner": "addons/final_test/final_test_background.png",
+    "icon": "addons/final_test/final_test_icon.png",
+    "download": "addons/final_test/final_test_v0.0.0.zip",
+    "infoPage": "addons/final_test/final_test-info.html",
+    "screenshots": [
+      "addons/final_test/screenshot_1.png",
+      "addons/final_test/screenshot_2.png"
+    ],
+    "patchNotes": [
+      {
+        "version": "0.0.0",
+        "notes": "Initial Release"
+      }
+    ],
+    "updated": "21 October 2025"
   }
 ]
