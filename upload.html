@@ -145,13 +145,12 @@
 
   <h2 class="section-title">Descriptions</h2>
   <label>Short Description (for main card)</label>
-  <!-- ✅ renamed field -->
-  <input type="text" name="description" id="shortDescription" maxlength="120" required placeholder="One short sentence..." />
+  <!-- ✅ fixed: name must match Worker -->
+  <input type="text" name="shortDescription" id="shortDescription" maxlength="120" required placeholder="One short sentence..." />
   <small>Appears on the main page card and info page header (max 120 characters).</small>
   <small id="charCount">0 / 120</small>
 
   <label>Long Description (for info page)</label>
-  <!-- ✅ renamed field -->
   <textarea name="longDescription" rows="5" required placeholder="Full description using Markdown..."></textarea>
   <small>Supports Markdown formatting (bold, italic, lists, links, etc.).</small>
 
@@ -225,7 +224,7 @@ shortDescInput.addEventListener("input", () => {
 function updatePreview() {
   titleEl.textContent = form.name.value || "Addon Name";
   metaEl.textContent = "By " + (form.author.value || "Author") + " • v" + (form.version.value || "0.0.0");
-  descEl.textContent = form.description.value || "Short description will appear here.";
+  descEl.textContent = form.shortDescription.value || "Short description will appear here.";
   tagsEl.innerHTML = "";
   const tags = form.tags.value.split(",").map(t => t.trim()).filter(Boolean);
   tags.forEach(tag => {
