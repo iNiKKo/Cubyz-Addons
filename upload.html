@@ -5,43 +5,95 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Cubyz Addon Uploader</title>
 <style>
-  body { font-family: Arial, sans-serif; background: #0d1117; color: #eee; padding: 2rem; display: flex; flex-direction: column; align-items: center; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #0d1117;
+    color: #eee;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
   h1 { margin-bottom: 0.5rem; }
   p { color: #aaa; }
-  form { background: #161b22; padding: 1.5rem; border-radius: 10px; max-width: 720px; width: 100%; }
-  h2.section-title { border-bottom: 1px solid #30363d; padding-bottom: 0.3rem; margin-top: 1.5rem; color: #fff; }
-  label { display: block; margin-top: 1rem; font-weight: bold; }
-  input, textarea, select { width: 100%; padding: 0.6rem; border-radius: 6px; border: none; background: #21262d; color: #eee; margin-top: 0.3rem; }
+  form {
+    background: #161b22;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 720px;
+    width: 100%;
+  }
+  h2.section-title {
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 0.3rem;
+    margin-top: 1.5rem;
+    color: #fff;
+  }
+  label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: bold;
+  }
+  input, textarea, select {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 6px;
+    border: none;
+    background: #21262d;
+    color: #eee;
+    margin-top: 0.3rem;
+  }
   small { color: #777; display: block; margin-top: 0.2rem; }
-  button { margin-top: 1.5rem; padding: 0.8rem 1.2rem; background: #238636; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
-  button:hover { background: #2ea043; }
-  #fetchBtn:disabled { background: #30363d; cursor: not-allowed; }
+  button {
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    background: #238636;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  button:hover:not(:disabled) { background: #2ea043; }
+  button:disabled {
+    background: #30363d;
+    color: #777;
+    cursor: not-allowed;
+  }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .row input { flex: 1; }
 </style>
 </head>
 <body>
 
 <h1>Cubyz Addon Uploader</h1>
-<p>Automatically upload or update your addon and create a pull request.</p>
+<p>Upload a new addon or update an existing one.</p>
 
 <form id="addonForm">
-  <label>Addon ID (no spaces)</label>
-  <input type="text" name="id" id="addonId" required />
-  <button type="button" id="fetchBtn" disabled>Fetch Addon Info</button>
-
   <label>Addon Name</label>
-  <input type="text" name="name" />
+  <input type="text" name="name" placeholder="Optional if updating" />
+
+  <label>Addon ID (no spaces)</label>
+  <div class="row">
+    <input type="text" name="id" id="addonId" required />
+    <button type="button" id="fetchBtn" disabled>Fetch</button>
+  </div>
 
   <label>Author</label>
-  <input type="text" name="author" />
+  <input type="text" name="author" placeholder="Optional if updating" />
 
   <label>Version</label>
-  <input type="text" name="version" value="0.0.0" />
+  <input type="text" name="version" placeholder="e.g. 1.0.1" />
 
   <label>Short Description</label>
-  <input type="text" name="shortDescription" id="shortDescription" maxlength="120" />
+  <input type="text" name="shortDescription" id="shortDescription" maxlength="120" placeholder="Optional if updating" />
 
   <label>Long Description</label>
-  <textarea name="longDescription" rows="5"></textarea>
+  <textarea name="longDescription" rows="5" placeholder="Optional if updating"></textarea>
 
   <label>Addon Icon (PNG)</label>
   <input type="file" name="icon" accept="image/png" />
@@ -50,87 +102,103 @@
   <input type="file" name="banner" accept="image/png" />
 
   <label>Addon .zip File</label>
-  <input type="file" name="addonZip" accept=".zip" id="addonZip" />
+  <input type="file" name="addonZip" id="addonZip" accept=".zip" />
 
   <label>Patch Notes</label>
-  <textarea name="patchNotes" id="patchNotes" rows="2" disabled></textarea>
+  <textarea name="patchNotes" id="patchNotes" rows="2" placeholder="Required only when updating zip" disabled></textarea>
 
   <label>Tags (comma separated)</label>
-  <input type="text" name="tags" />
+  <input type="text" name="tags" placeholder="Optional if updating" />
 
   <label>Cubyz Version Compatibility</label>
-  <input type="text" name="cubyzVersion" />
+  <input type="text" name="cubyzVersion" placeholder="Optional if updating" />
 
   <button type="submit">Upload / Update Addon</button>
 </form>
 
 <script>
 const form = document.getElementById("addonForm");
-const addonIdInput = document.getElementById("addonId");
 const fetchBtn = document.getElementById("fetchBtn");
-const patchNotesField = document.getElementById("patchNotes");
-const addonZipInput = document.getElementById("addonZip");
+const addonIdInput = document.getElementById("addonId");
+const addonZip = document.getElementById("addonZip");
+const patchNotes = document.getElementById("patchNotes");
+
 const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
 
-// enable fetch button only when addonId filled
+// Enable fetch button when addon ID has content
 addonIdInput.addEventListener("input", () => {
   fetchBtn.disabled = !addonIdInput.value.trim();
 });
 
-// disable patch notes unless zip chosen
-addonZipInput.addEventListener("change", () => {
-  patchNotesField.disabled = !addonZipInput.files.length;
+// Enable/disable patch notes depending on zip selection
+addonZip.addEventListener("change", () => {
+  patchNotes.disabled = !addonZip.files.length;
 });
 
-// Fetch existing addon data
+// === Fetch existing addon info ===
 fetchBtn.addEventListener("click", async () => {
   const id = addonIdInput.value.trim();
-  if (!id) return alert("Enter an addon ID first!");
+  if (!id) return;
+  fetchBtn.disabled = true;
+  fetchBtn.textContent = "Fetching...";
+
   try {
-    const res = await fetch(workerUrl + "?id=" + encodeURIComponent(id));
-    if (!res.ok) throw new Error("Fetch failed: " + res.status);
+    const res = await fetch(`${workerUrl}?id=${encodeURIComponent(id)}`);
     const data = await res.json();
-    if (!data.ok) return alert("Addon not found!");
-    const addon = data.addon;
-    console.log("Fetched addon:", addon);
-    for (const [k,v] of Object.entries(addon)) {
-      if (form.elements[k] && form.elements[k].type !== "file") {
-        form.elements[k].value = Array.isArray(v) ? v.join(", ") : v;
-      }
-    }
-    alert("Fetched addon info successfully! You can now edit and re-upload.");
+
+    if (!data.ok) throw new Error(data.error || "Unknown error");
+    const a = data.addon;
+
+    // Prefill form fields
+    form.name.value = a.name || "";
+    form.author.value = a.author || "";
+    form.version.value = a.version || "";
+    form.shortDescription.value = a.description || "";
+    form.longDescription.value = a.longDescription || "";
+    form.tags.value = (a.tags || []).join(", ");
+    form.cubyzVersion.value = a.cubyzVersion || "";
+
+    alert(`✅ Loaded existing addon data for "${a.name}"`);
   } catch (err) {
     alert("❌ Error fetching addon info: " + err.message);
+  } finally {
+    fetchBtn.textContent = "Fetch";
+    fetchBtn.disabled = false;
   }
 });
 
-// Submit upload
+// === Submit ===
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
-  console.log("Submitting addon with fields:");
-  for (const [key, val] of data.entries()) {
-    console.log(key, val instanceof File ? `[File: ${val.name}]` : val);
+
+  // Require patch notes if zip selected
+  if (data.get("addonZip") && !data.get("patchNotes")) {
+    alert("❌ Please enter patch notes when uploading a new .zip");
+    return;
   }
 
   try {
     const res = await fetch(workerUrl, { method: "POST", body: data });
     const text = await res.text();
-    console.log("Worker response text:", text);
+
     let json;
-    try { json = JSON.parse(text); } 
-    catch { return alert("❌ Non-JSON response:\n" + text.slice(0,200)); }
+    try { json = JSON.parse(text); }
+    catch {
+      alert("❌ Worker returned non-JSON response:\n" + text.slice(0, 200));
+      return;
+    }
 
     if (json.ok) {
-      alert("✅ Uploaded successfully! Pull request:\n" + json.pr_url);
-      window.open(json.pr_url, "_blank");
+      alert("✅ Addon uploaded or updated successfully!");
     } else {
       alert("❌ Error: " + (json.error || JSON.stringify(json)));
     }
   } catch (err) {
-    alert("Network/server error: " + err.message);
+    alert("Network or server error: " + err.message);
   }
 });
 </script>
+
 </body>
 </html>
