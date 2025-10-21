@@ -90,7 +90,9 @@ async function loadAddons() {
   container.innerHTML = "";
 
   addons.forEach(addon => {
-    const shortDesc = addon.description || addon.longDescription || "No description available";
+    // Use shortDescription if available, fallback to description
+    const shortDesc = addon.shortDescription || addon.description || "No description available";
+
     const card = document.createElement("div");
     card.className = "addon-card";
     card.innerHTML = `
@@ -98,7 +100,9 @@ async function loadAddons() {
       <div class="addon-card-content">
         <h3>${addon.name}</h3>
         <p>${shortDesc}</p>
-        <div class="tags">${(addon.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}</div>
+        <div class="tags">
+          ${(addon.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
+        </div>
         <div class="meta">v${addon.version} • by ${addon.author}</div>
         <button class="download" onclick="window.open('${addon.infoPage}', '_blank')">ℹ️ More Info</button>
       </div>
