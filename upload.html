@@ -237,11 +237,8 @@ updatePreview();
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
-
-  // backward compatibility: send shortDescription too
-  if (!data.get("shortDescription") && data.get("description")) {
+  if (!data.get("shortDescription") && data.get("description"))
     data.append("shortDescription", data.get("description"));
-  }
 
   const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
 
