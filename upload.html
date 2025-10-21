@@ -148,10 +148,9 @@
   <input type="text" name="description" maxlength="120" placeholder="One short sentence..." />
   <small>Appears on the main page card. Keep it under 120 characters.</small>
 
-  <!-- ✅ NEW FIELD: Long Description -->
   <label>Full Description (for info page)</label>
-  <textarea name="longDescription" rows="5" placeholder="Longer description for info page..."></textarea>
-  <small>Supports Markdown formatting. If left empty, the short description will be reused.</small>
+  <textarea name="longDescription" rows="5" required></textarea>
+  <small>Supports Markdown formatting (use blank lines to separate paragraphs).</small>
 
   <h2 class="section-title">Media Files</h2>
   <label>Addon Icon (PNG)</label>
@@ -238,6 +237,8 @@ updatePreview();
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
+  if (!data.get("shortDescription") && data.get("description"))
+    data.append("shortDescription", data.get("description"));
 
   const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
 
