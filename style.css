@@ -35,7 +35,6 @@ body {
   font-style: normal;
 }
 
-
 .addon-container {
   display: flex;
   flex-wrap: wrap;
@@ -154,6 +153,9 @@ body {
   gap: 8px;
 }
 
+
+
+
 .addon-download-btn {
   width: 40px;
   height: 40px;
@@ -182,6 +184,7 @@ body {
   fill: white;
   display: block;
 }
+
 
 .download-btn,
 .info-btn {
@@ -219,7 +222,6 @@ body {
   fill: white;
 }
 
-
 .addon-detail-wrapper {
   display: flex;
   flex-direction: row;
@@ -229,11 +231,13 @@ body {
   gap: 24px;
 }
 
+
 .addon-detail-main {
   flex: 3;
   display: flex;
   flex-direction: column;
 }
+
 
 .addon-sidebar {
   flex: 1;
@@ -241,6 +245,7 @@ body {
   flex-direction: column;
   gap: 16px;
 }
+
 
 .addon-detail-header {
   display: flex;
@@ -330,11 +335,13 @@ body {
   color: #ddd;
 }
 
+
 .banner-img, .screenshot-img {
   width: 100%;
   border-radius: 10px;
   margin: 16px 0;
 }
+
 
 .sidebar-card {
   background: #1e1e1e;
@@ -360,7 +367,6 @@ body {
   margin: 0;
 }
 
-
 .addon-card-header {
   display: flex;
   align-items: center;
@@ -372,4 +378,143 @@ body {
   margin-bottom: 24px;
 }
 
-.addon-c
+.addon-card-header .addon-header-image {
+  width: 96px;
+  height: 96px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid #333;
+}
+
+.addon-card-header .addon-header-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.addon-card-header .addon-header-content h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.addon-card-header .addon-header-content p {
+  margin: 0;
+  color: #cfcfcf;
+  font-size: 0.95rem;
+}
+
+.addon-card-header .download-btn {
+  display: inline-block;
+  background: #4CAF50;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  width: fit-content;
+}
+
+.addon-card-header .download-btn:hover {
+  background: #45a049;
+}
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(48%, 1fr));
+  gap: 16px;
+}
+
+.screenshot-grid img {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+
+
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(3px);
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.8);
+  cursor: zoom-out;
+}
+
+.addon-versions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.addon-versions-list li {
+  margin-bottom: 12px;
+}
+
+
+.version-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1e1e1e;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+}
+
+
+.version-download-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.version-download-btn:hover {
+  background-color: #45a049;
+}
+.upload-btn {
+  background: #4CAF50;
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.upload-btn:hover {
+  background: #45a049;
+  transform: translateY(-2px);
+}
+
+.upload-btn svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
