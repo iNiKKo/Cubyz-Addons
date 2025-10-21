@@ -15,99 +15,131 @@
   small { color: #777; display: block; margin-top: 0.2rem; }
   button { margin-top: 1.5rem; padding: 0.8rem 1.2rem; background: #238636; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
   button:hover { background: #2ea043; }
-  #fetchBtn:disabled { background: #30363d; cursor: not-allowed; }
+  #fetchBtn { background: #30363d; color: #ccc; margin-left: 8px; padding: 0.6rem 1rem; border-radius: 6px; cursor: not-allowed; }
+  #fetchBtn.active { background: #238636; color: white; cursor: pointer; }
+  #fetchStatus { margin-top: 0.2rem; color: #888; font-size: 0.9rem; }
 </style>
 </head>
 <body>
 
 <h1>Cubyz Addon Uploader</h1>
-<p>Automatically upload or update your addon and create a pull request.</p>
+<p>Automatically upload your addon and create a pull request.</p>
 
 <form id="addonForm">
-  <label>Addon ID (no spaces)</label>
-  <input type="text" name="id" id="addonId" required />
-  <button type="button" id="fetchBtn" disabled>Fetch Addon Info</button>
 
   <label>Addon Name</label>
-  <input type="text" name="name" />
+  <input type="text" name="name" id="addonName" />
+
+  <label>Addon ID (no spaces)</label>
+  <div style="display:flex; align-items:center; gap:8px;">
+    <input type="text" name="id" id="addonId" required />
+    <button id="fetchBtn" type="button">Fetch</button>
+  </div>
+  <small id="fetchStatus"></small>
 
   <label>Author</label>
-  <input type="text" name="author" />
+  <input type="text" name="author" id="addonAuthor" />
 
   <label>Version</label>
-  <input type="text" name="version" value="0.0.0" />
+  <input type="text" name="version" id="addonVersion" value="0.0.0" />
 
   <label>Short Description</label>
   <input type="text" name="shortDescription" id="shortDescription" maxlength="120" />
 
   <label>Long Description</label>
-  <textarea name="longDescription" rows="5"></textarea>
+  <textarea name="longDescription" id="longDescription" rows="5"></textarea>
 
   <label>Addon Icon (PNG)</label>
-  <input type="file" name="icon" accept="image/png" />
+  <input type="file" name="icon" id="addonIcon" accept="image/png" />
 
   <label>Banner / Background (PNG)</label>
-  <input type="file" name="banner" accept="image/png" />
+  <input type="file" name="banner" id="addonBanner" accept="image/png" />
 
   <label>Addon .zip File</label>
-  <input type="file" name="addonZip" accept=".zip" id="addonZip" />
+  <input type="file" name="addonZip" id="addonZip" accept=".zip" />
 
   <label>Patch Notes</label>
-  <textarea name="patchNotes" id="patchNotes" rows="2" disabled></textarea>
+  <textarea name="patchNotes" id="patchNotes" rows="2" disabled placeholder="(enabled when .zip selected)"></textarea>
 
   <label>Tags (comma separated)</label>
-  <input type="text" name="tags" />
+  <input type="text" name="tags" id="tags" />
 
   <label>Cubyz Version Compatibility</label>
-  <input type="text" name="cubyzVersion" />
+  <input type="text" name="cubyzVersion" id="cubyzVersion" />
 
-  <button type="submit">Upload / Update Addon</button>
+  <button type="submit">Upload Addon</button>
 </form>
 
 <script>
 const form = document.getElementById("addonForm");
-const addonIdInput = document.getElementById("addonId");
+const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev";
 const fetchBtn = document.getElementById("fetchBtn");
-const patchNotesField = document.getElementById("patchNotes");
-const addonZipInput = document.getElementById("addonZip");
-const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
+const addonIdInput = document.getElementById("addonId");
+const fetchStatus = document.getElementById("fetchStatus");
+const patchNotes = document.getElementById("patchNotes");
+const addonZip = document.getElementById("addonZip");
 
-// enable fetch button only when addonId filled
-addonIdInput.addEventListener("input", () => {
-  fetchBtn.disabled = !addonIdInput.value.trim();
-});
-
-// disable patch notes unless zip chosen
-addonZipInput.addEventListener("change", () => {
-  patchNotesField.disabled = !addonZipInput.files.length;
-});
-
-// Fetch existing addon data
-fetchBtn.addEventListener("click", async () => {
-  const id = addonIdInput.value.trim();
-  if (!id) return alert("Enter an addon ID first!");
-  try {
-    const res = await fetch(workerUrl + "?id=" + encodeURIComponent(id));
-    if (!res.ok) throw new Error("Fetch failed: " + res.status);
-    const data = await res.json();
-    if (!data.ok) return alert("Addon not found!");
-    const addon = data.addon;
-    console.log("Fetched addon:", addon);
-    for (const [k,v] of Object.entries(addon)) {
-      if (form.elements[k] && form.elements[k].type !== "file") {
-        form.elements[k].value = Array.isArray(v) ? v.join(", ") : v;
-      }
-    }
-    alert("Fetched addon info successfully! You can now edit and re-upload.");
-  } catch (err) {
-    alert("❌ Error fetching addon info: " + err.message);
+// --- Enable Patch Notes only when .zip selected ---
+addonZip.addEventListener("change", () => {
+  if (addonZip.files.length > 0) {
+    patchNotes.disabled = false;
+  } else {
+    patchNotes.disabled = true;
+    patchNotes.value = "";
   }
 });
 
-// Submit upload
+// --- Enable/disable Fetch button based on ID input ---
+addonIdInput.addEventListener("input", () => {
+  const id = addonIdInput.value.trim();
+  if (id) {
+    fetchBtn.classList.add("active");
+    fetchBtn.disabled = false;
+  } else {
+    fetchBtn.classList.remove("active");
+    fetchBtn.disabled = true;
+  }
+  fetchStatus.textContent = "";
+});
+
+// --- Fetch existing addon info ---
+fetchBtn.addEventListener("click", async () => {
+  const id = addonIdInput.value.trim();
+  if (!id) return;
+  fetchStatus.textContent = "Fetching...";
+  fetchStatus.style.color = "#888";
+
+  try {
+    const res = await fetch(`${workerUrl}?id=${encodeURIComponent(id)}`);
+    const data = await res.json();
+
+    if (!data.ok) throw new Error(data.error || "Not found");
+
+    const addon = data.addon;
+    fetchStatus.textContent = "✅ Addon found and loaded.";
+    fetchStatus.style.color = "lightgreen";
+
+    // Fill the form
+    document.getElementById("addonName").value = addon.name || "";
+    document.getElementById("addonAuthor").value = addon.author || "";
+    document.getElementById("addonVersion").value = addon.version || "";
+    document.getElementById("shortDescription").value = addon.description || "";
+    document.getElementById("longDescription").value = addon.longDescription || "";
+    document.getElementById("tags").value = (addon.tags || []).join(", ");
+    document.getElementById("cubyzVersion").value = addon.cubyzVersion || "";
+
+  } catch (err) {
+    console.error("Fetch failed:", err);
+    fetchStatus.textContent = "❌ Addon not found or fetch failed.";
+    fetchStatus.style.color = "red";
+  }
+});
+
+// --- Handle submission ---
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
+
   console.log("Submitting addon with fields:");
   for (const [key, val] of data.entries()) {
     console.log(key, val instanceof File ? `[File: ${val.name}]` : val);
@@ -117,9 +149,14 @@ form.addEventListener("submit", async e => {
     const res = await fetch(workerUrl, { method: "POST", body: data });
     const text = await res.text();
     console.log("Worker response text:", text);
+
     let json;
-    try { json = JSON.parse(text); } 
-    catch { return alert("❌ Non-JSON response:\n" + text.slice(0,200)); }
+    try {
+      json = JSON.parse(text);
+    } catch {
+      alert("❌ Worker returned non-JSON response:\n" + text.slice(0, 200));
+      return;
+    }
 
     if (json.ok) {
       alert("✅ Uploaded successfully! Pull request:\n" + json.pr_url);
@@ -128,9 +165,10 @@ form.addEventListener("submit", async e => {
       alert("❌ Error: " + (json.error || JSON.stringify(json)));
     }
   } catch (err) {
-    alert("Network/server error: " + err.message);
+    alert("Network or server error: " + err.message);
   }
 });
 </script>
+
 </body>
 </html>
