@@ -145,11 +145,14 @@
 
   <h2 class="section-title">Descriptions</h2>
   <label>Short Description (for main card)</label>
-  <input type="text" name="shortDescription" maxlength="120" required placeholder="One short sentence..." />
+  <!-- ✅ renamed field -->
+  <input type="text" name="description" id="shortDescription" maxlength="120" required placeholder="One short sentence..." />
   <small>Appears on the main page card and info page header (max 120 characters).</small>
+  <small id="charCount">0 / 120</small>
 
   <label>Long Description (for info page)</label>
-  <textarea name="description" rows="5" required placeholder="Full description using Markdown..."></textarea>
+  <!-- ✅ renamed field -->
+  <textarea name="longDescription" rows="5" required placeholder="Full description using Markdown..."></textarea>
   <small>Supports Markdown formatting (bold, italic, lists, links, etc.).</small>
 
   <h2 class="section-title">Media Files</h2>
@@ -212,11 +215,17 @@ const titleEl = preview.querySelector("h3");
 const metaEl = preview.querySelector(".meta");
 const descEl = preview.querySelector("p");
 const tagsEl = preview.querySelector(".tags");
+const shortDescInput = document.getElementById("shortDescription");
+const charCount = document.getElementById("charCount");
+
+shortDescInput.addEventListener("input", () => {
+  charCount.textContent = `${shortDescInput.value.length} / 120`;
+});
 
 function updatePreview() {
   titleEl.textContent = form.name.value || "Addon Name";
   metaEl.textContent = "By " + (form.author.value || "Author") + " • v" + (form.version.value || "0.0.0");
-  descEl.textContent = form.shortDescription.value || "Short description will appear here.";
+  descEl.textContent = form.description.value || "Short description will appear here.";
   tagsEl.innerHTML = "";
   const tags = form.tags.value.split(",").map(t => t.trim()).filter(Boolean);
   tags.forEach(tag => {
@@ -241,12 +250,19 @@ form.addEventListener("submit", async e => {
 
   try {
     const res = await fetch(workerUrl, { method: "POST", body: data });
-    const json = await res.json();
+    const text = await res.text();
+    let json;
+    try {
+      json = JSON.parse(text);
+    } catch {
+      throw new Error(text);
+    }
+
     if (json.ok) {
-      alert("Uploaded! Pull request created:\n" + json.pr_url);
+      alert("✅ Uploaded! Pull request created:\n" + json.pr_url);
       window.open(json.pr_url, "_blank");
     } else {
-      alert("Error: " + (json.error || JSON.stringify(json)));
+      alert("❌ Error: " + (json.error || JSON.stringify(json)));
     }
   } catch (err) {
     alert("Network or server error: " + err.message);
