@@ -59,7 +59,7 @@
     "id": "extra_biomes",
     "name": "Extra Biomes",
     "description": "New biomes, blocks and items.",
-    "longDescription": "**Current State**\r\n\r\n**Main Biomes**\r\n- **Snowy Crimsonforest**  \r\n  `/tp extrabiomes:snowy_crimsonforest`\r\n\r\n**Sub-Biomes**\r\n- Ice Lake  \r\n- High Snowy Crimsonforest  \r\n\r\n**Blocks**\r\n- Crimson Needles  \r\n- Leafy Crimson Needles  \r\n- Red Fern  \r\n\r\n**Items**\r\n- **Pine Cone** Ã¢ÂÂ dropped by Crimson Needles  \r\n- **Golden Pine Cone** Ã¢ÂÂ *canÃ¢ÂÂt be obtained yet*  \r\n- **Blueberries** Ã¢ÂÂ *canÃ¢ÂÂt be obtained yet*  \r\n\r\n**Crafting Recipes**\r\n- `4ÃÂ Pine Cones Ã¢ÂÂ 1ÃÂ Resin`  \r\n\r\n**Structures**\r\n- Various **tree structures** for Snowy Crimsonforest  \r\n- Various **stone structures** for Snowy Crimsonforest\r\n- **Outpost tower** structure for Snowy Crimsonforest",
+    "longDescription": "**Current State**\r\n\r\n**Main Biomes**\r\n- **Snowy Crimsonforest**  \r\n  `/tp extrabiomes:snowy_crimsonforest`\r\n\r\n**Sub-Biomes**\r\n- Ice Lake  \r\n- High Snowy Crimsonforest  \r\n\r\n**Blocks**\r\n- Crimson Needles  \r\n- Leafy Crimson Needles  \r\n- Red Fern  \r\n\r\n**Items**\r\n- **Pine Cone** — dropped by Crimson Needles  \r\n- **Golden Pine Cone** — *can’t be obtained yet*  \r\n- **Blueberries** — *can’t be obtained yet*  \r\n\r\n**Crafting Recipes**\r\n- `4× Pine Cones → 1× Resin`  \r\n\r\n**Structures**\r\n- Various **tree structures** for Snowy Crimsonforest  \r\n- Various **stone structures** for Snowy Crimsonforest\r\n- **Outpost tower** structure for Snowy Crimsonforest",
     "tags": [
       "Biome",
       "Blocks",
@@ -117,12 +117,36 @@
     "updated": "21 October 2025"
   },
   {
+    "id": "fancy_jungle",
+    "name": "Fancy Jungle",
+    "description": "Jungle improvements, additionally it contains monstera plant.",
+    "longDescription": "No information provided.",
+    "tags": [
+      "Biome"
+    ],
+    "version": "0.0.0",
+    "author": "ARGmasterPlay",
+    "cubyzVersion": "0.0.0",
+    "banner": "addons/fancy_jungle/fancy_jungle_background.png",
+    "icon": "addons/fancy_jungle/fancy_jungle_icon.png",
+    "download": "addons/fancy_jungle/fancy_jungle_v0.0.0.zip",
+    "infoPage": "addons/fancy_jungle/fancy_jungle-info.html",
+    "screenshots": [],
+    "patchNotes": [
+      {
+        "version": "0.0.0",
+        "notes": "Initial Release"
+      }
+    ],
+    "updated": "21 October 2025"
+  },
+  {
     "id": "grassy",
     "name": "Grassy",
     "description": "Adds recipes for all grass block variants",
     "longDescription": "Combine 4x soil or mud with any foliage variant to craft 4x of the corresponding grass block",
     "tags": [
-      "recipes"
+      "Recipes"
     ],
     "version": "0.0.0",
     "author": "creare",
