@@ -151,7 +151,7 @@
     "version": "0.0.0",
     "author": "creare",
     "cubyzVersion": "0.0.0 - 0.1.0-dev",
-    "banner": "addons/grassy/grassy_background.png",
+    "banner": "addons/grassy/banner.png",
     "icon": "addons/grassy/grassy_icon.png",
     "download": "addons/grassy/grassy_v0.0.0.zip",
     "infoPage": "addons/grassy/grassy-info.html",
