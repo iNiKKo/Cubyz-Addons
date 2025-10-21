@@ -145,11 +145,11 @@
 
   <h2 class="section-title">Descriptions</h2>
   <label>Short Description (for main card)</label>
-  <input type="text" name="description" maxlength="120" required placeholder="One short sentence..." />
+  <input type="text" name="shortDescription" maxlength="120" required placeholder="One short sentence..." />
   <small>Appears on the main page card and info page header (max 120 characters).</small>
 
   <label>Long Description (for info page)</label>
-  <textarea name="longDescription" rows="5" required placeholder="Full description using Markdown..."></textarea>
+  <textarea name="description" rows="5" required placeholder="Full description using Markdown..."></textarea>
   <small>Supports Markdown formatting (bold, italic, lists, links, etc.).</small>
 
   <h2 class="section-title">Media Files</h2>
@@ -216,7 +216,7 @@ const tagsEl = preview.querySelector(".tags");
 function updatePreview() {
   titleEl.textContent = form.name.value || "Addon Name";
   metaEl.textContent = "By " + (form.author.value || "Author") + " • v" + (form.version.value || "0.0.0");
-  descEl.textContent = form.description.value || "Short description will appear here.";
+  descEl.textContent = form.shortDescription.value || "Short description will appear here.";
   tagsEl.innerHTML = "";
   const tags = form.tags.value.split(",").map(t => t.trim()).filter(Boolean);
   tags.forEach(tag => {
