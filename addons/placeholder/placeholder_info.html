@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Addon Info</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-container">
+      <h1 class="site-title bbh-sans-hegarty-regular">
+        <a href="../../index.html" style="text-decoration: none; color: inherit;">
+          <span class="cubyz">CubyzHub</span>
+        </a>
+      </h1>
+    </div>
+  </header>
+
+  <!-- Addon Detail Layout -->
+  <div class="addon-detail-wrapper">
+
+    <!-- LEFT MAIN CONTENT -->
+    <main class="addon-detail-main">
+
+      <!-- Addon Card Header -->
+      <div class="addon-card-header">
+        <img id="addon-icon" src="../materialz/materialz_icon.png" alt="Addon Icon" class="addon-header-image">
+        <div class="addon-header-content">
+          <h2 id="addon-name">Addon Name</h2>
+          <p id="addon-short-desc">Short description goes here — lightweight addon expanding material variety in Cubyz.</p>
+          <a id="addon-download" href="#" class="download-btn" download>⬇ Download</a>
+        </div>
+      </div>
+
+      <!-- Tab Menu -->
+      <div class="tab-menu">
+        <button id="description-tab" class="active">Description</button>
+        <button id="versions-tab">Versions</button>
+      </div>
+
+      <!-- Description Section -->
+      <section id="description-section" class="addon-description">
+        <img id="addon-banner" src="../materialz/materialz_background.png" alt="Addon Banner" class="banner-img" />
+        <div id="addon-longdesc" class="markdown-content">
+          <!-- Markdown longDescription will render here -->
+        </div>
+
+        <h3>Screenshots</h3>
+        <div class="screenshot-grid" id="screenshot-grid">
+          <!-- optional screenshots if any -->
+        </div>
+        
+        <!-- Lightbox viewer -->
+        <div id="lightbox" class="lightbox">
+          <img src="" alt="Zoomed screenshot">
+        </div>
+      </section>
+
+      <!-- Versions Section -->
+      <section id="versions-section" class="addon-description" style="display: none;">
+        <h3>Addon Versions</h3>
+        <ul class="addon-versions-list" id="addon-versions">
+          <li>
+            <div class="version-info">
+              <span><strong>v0.1</strong> – Initial release</span>
+              <a href="#" download class="version-download-btn">⬇ Download</a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="addon-sidebar">
+
+      <div class="sidebar-card">
+        <h4>Compatibility</h4>
+        <p><strong>Cubyz Version:</strong> <span id="cubyz-version">0.5+</span></p>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>File Information</h4>
+        <p><strong>Addon Version:</strong> <span id="addon-version">v0.1</span></p>
+        <p><strong>Last Updated:</strong> <span id="addon-updated">DATE HERE</span></p>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>Author</h4>
+        <p><strong id="addon-author">AUTHOR HERE</strong></p>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Tabs logic
+    const descriptionTab = document.getElementById('description-tab');
+    const versionsTab = document.getElementById('versions-tab');
+    const descriptionSection = document.getElementById('description-section');
+    const versionsSection = document.getElementById('versions-section');
+
+    descriptionTab.addEventListener('click', () => {
+      descriptionTab.classList.add('active');
+      versionsTab.classList.remove('active');
+      descriptionSection.style.display = 'block';
+      versionsSection.style.display = 'none';
+    });
+
+    versionsTab.addEventListener('click', () => {
+      versionsTab.classList.add('active');
+      descriptionTab.classList.remove('active');
+      descriptionSection.style.display = 'none';
+      versionsSection.style.display = 'block';
+    });
+
+    // Lightbox logic
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    document.addEventListener('click', e => {
+      if (e.target.closest('.lightbox-thumb img')) {
+        lightboxImg.src = e.target.src;
+        lightbox.style.display = 'flex';
+      } else if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+        lightboxImg.src = '';
+      }
+    });
+
+    // Load addon info dynamically
+    async function loadAddonInfo() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const addonId = urlParams.get('id');
+      if (!addonId) return;
+
+      try {
+        const response = await fetch('../../addons.json');
+        const addons = await response.json();
+        const addon = addons.find(a => a.id === addonId);
+        if (!addon) return;
+
+        // Populate UI
+        document.getElementById('addon-name').textContent = addon.name;
+        document.getElementById('addon-short-desc').textContent = addon.description;
+        document.getElementById('addon-icon').src = addon.icon;
+        document.getElementById('addon-banner').src = addon.banner;
+        document.getElementById('addon-author').textContent = addon.author;
+        document.getElementById('addon-version').textContent = addon.version;
+        document.getElementById('addon-download').href = addon.download;
+
+        // Render markdown description
+        const longDescHTML = marked.parse(addon.longDescription || "No detailed description provided.");
+        document.getElementById('addon-longdesc').innerHTML = longDescHTML;
+
+      } catch (err) {
+        console.error("Error loading addon info:", err);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', loadAddonInfo);
+  </script>
+</body>
+</html>

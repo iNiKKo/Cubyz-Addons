@@ -60,7 +60,6 @@
   }
   button:hover { background: #2ea043; }
 
-  /* preview styles */
   .preview {
     margin-top: 2rem;
     padding: 1rem;
@@ -146,12 +145,12 @@
 
   <h2 class="section-title">Descriptions</h2>
   <label>Short Description (for main card)</label>
-  <input type="text" name="shortDescription" maxlength="120" placeholder="One short sentence..." />
-  <small>Appears on the main page card. Keep it under 120 characters.</small>
+  <input type="text" name="description" maxlength="120" required placeholder="One short sentence..." />
+  <small>Appears on the main page card and info page header (max 120 characters).</small>
 
-  <label>Full Description (for info page)</label>
-  <textarea name="description" rows="5" required></textarea>
-  <small>Supports Markdown formatting (use blank lines to separate paragraphs).</small>
+  <label>Long Description (for info page)</label>
+  <textarea name="longDescription" rows="5" required placeholder="Full description using Markdown..."></textarea>
+  <small>Supports Markdown formatting (bold, italic, lists, links, etc.).</small>
 
   <h2 class="section-title">Media Files</h2>
   <label>Addon Icon (PNG)</label>
@@ -208,7 +207,6 @@
 <script>
 const form = document.getElementById("addonForm");
 const preview = document.getElementById("cardPreview");
-
 const bannerImg = preview.querySelector(".banner");
 const titleEl = preview.querySelector("h3");
 const metaEl = preview.querySelector(".meta");
@@ -218,7 +216,7 @@ const tagsEl = preview.querySelector(".tags");
 function updatePreview() {
   titleEl.textContent = form.name.value || "Addon Name";
   metaEl.textContent = "By " + (form.author.value || "Author") + " • v" + (form.version.value || "0.0.0");
-  descEl.textContent = form.shortDescription.value || "Short description will appear here.";
+  descEl.textContent = form.description.value || "Short description will appear here.";
   tagsEl.innerHTML = "";
   const tags = form.tags.value.split(",").map(t => t.trim()).filter(Boolean);
   tags.forEach(tag => {
@@ -228,6 +226,7 @@ function updatePreview() {
     tagsEl.appendChild(span);
   });
 }
+
 form.addEventListener("input", updatePreview);
 form.banner.addEventListener("change", e => {
   const file = e.target.files[0];
