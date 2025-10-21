@@ -22,5 +22,29 @@
       }
     ],
     "updated": "21 October 2025"
+  },
+  {
+    "id": "amazing_spice",
+    "name": "amazingspice",
+    "description": "amazingspice",
+    "longDescription": "amazingspiceamazingspice",
+    "tags": [
+      "amazingspice"
+    ],
+    "version": "0.0.0",
+    "author": "amazingspice",
+    "cubyzVersion": "0.0.0",
+    "banner": "addons/amazing_spice/amazing_spice_background.png",
+    "icon": "addons/amazing_spice/amazing_spice_icon.png",
+    "download": "addons/amazing_spice/amazing_spice_v0.0.0.zip",
+    "infoPage": "addons/amazing_spice/amazing_spice-info.html",
+    "screenshots": [],
+    "patchNotes": [
+      {
+        "version": "0.0.0",
+        "notes": "amazingspice"
+      }
+    ],
+    "updated": "21 October 2025"
   }
 ]
