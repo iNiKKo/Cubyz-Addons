@@ -60,6 +60,7 @@
   }
   button:hover { background: #2ea043; }
 
+  /* preview styles */
   .preview {
     margin-top: 2rem;
     padding: 1rem;
@@ -145,11 +146,11 @@
 
   <h2 class="section-title">Descriptions</h2>
   <label>Short Description (for main card)</label>
-  <input type="text" name="description" maxlength="120" placeholder="One short sentence..." />
+  <input type="text" name="shortDescription" maxlength="120" placeholder="One short sentence..." />
   <small>Appears on the main page card. Keep it under 120 characters.</small>
 
   <label>Full Description (for info page)</label>
-  <textarea name="longDescription" rows="5" required></textarea>
+  <textarea name="description" rows="5" required></textarea>
   <small>Supports Markdown formatting (use blank lines to separate paragraphs).</small>
 
   <h2 class="section-title">Media Files</h2>
@@ -217,7 +218,7 @@ const tagsEl = preview.querySelector(".tags");
 function updatePreview() {
   titleEl.textContent = form.name.value || "Addon Name";
   metaEl.textContent = "By " + (form.author.value || "Author") + " • v" + (form.version.value || "0.0.0");
-  descEl.textContent = form.description.value || "Short description will appear here.";
+  descEl.textContent = form.shortDescription.value || "Short description will appear here.";
   tagsEl.innerHTML = "";
   const tags = form.tags.value.split(",").map(t => t.trim()).filter(Boolean);
   tags.forEach(tag => {
@@ -237,10 +238,7 @@ updatePreview();
 form.addEventListener("submit", async e => {
   e.preventDefault();
   const data = new FormData(form);
-  if (!data.get("shortDescription") && data.get("description"))
-    data.append("shortDescription", data.get("description"));
-
-  const workerUrl = "api.cubyzlist.site/";
+  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
 
   try {
     const res = await fetch(workerUrl, { method: "POST", body: data });
