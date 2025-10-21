@@ -4,114 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cubyz Addons</title>
-<style>
-  body {
-    background: #0d1117;
-    color: #eee;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 2rem;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-  .addons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  .addon-card {
-    background: #161b22;
-    border-radius: 12px;
-    overflow: hidden;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-  }
-  .addon-card img.banner {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-  }
-  .addon-card-content {
-    padding: 1rem;
-  }
-  .addon-card-content h3 {
-    margin: 0 0 0.4rem 0;
-  }
-  .addon-card-content p {
-    font-size: 0.9rem;
-    color: #ccc;
-    height: 2.8rem;
-    overflow: hidden;
-  }
-  .meta {
-    font-size: 0.8rem;
-    color: #999;
-    margin-top: 0.4rem;
-  }
-  .tags {
-    margin-top: 0.5rem;
-  }
-  .tag {
-    background: #30363d;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 0.75rem;
-    display: inline-block;
-    margin-right: 4px;
-  }
-  .download {
-    background: #238636;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    margin-top: 0.8rem;
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-  }
-  .download:hover {
-    background: #2ea043;
-  }
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header>
+  <h1>Cubyz Addons</h1>
+</header>
 
-<h1>🧩 Cubyz Addons</h1>
-<div class="addons" id="addonsContainer"></div>
+<main id="addonContainer" class="addon-grid"></main>
 
 <script>
 async function loadAddons() {
-  const res = await fetch("addons/addons.json");
-  const addons = await res.json();
-  const container = document.getElementById("addonsContainer");
-  container.innerHTML = "";
+  try {
+    const response = await fetch('addons.json');
+    const addons = await response.json();
+    const container = document.getElementById('addonContainer');
 
-  addons.forEach(addon => {
-    // Use shortDescription if available, fallback to description
-    const shortDesc = addon.shortDescription || addon.description || "No description available";
+    addons.forEach(addon => {
+      const card = document.createElement('div');
+      card.className = 'addon-card';
 
-    const card = document.createElement("div");
-    card.className = "addon-card";
-    card.innerHTML = `
-      <img class="banner" src="${addon.banner}" alt="">
-      <div class="addon-card-content">
-        <h3>${addon.name}</h3>
-        <p>${shortDesc}</p>
-        <div class="tags">
-          ${(addon.tags || []).map(t => `<span class="tag">${t}</span>`).join("")}
+      card.innerHTML = `
+        <img class="banner" src="${addon.banner}" alt="${addon.name} banner">
+        <div class="addon-card-content">
+          <div class="addon-icon-title">
+            <img src="${addon.icon}" alt="${addon.name} icon" class="addon-icon">
+            <div>
+              <h3>${addon.name}</h3>
+              <p class="addon-author">by ${addon.author}</p>
+            </div>
+          </div>
+          <p class="addon-description">${addon.description}</p>
+          <div class="addon-tags">
+            ${addon.tags.map(tag => `<span>${tag}</span>`).join('')}
+          </div>
+          <div class="addon-footer">
+            <a href="${addon.infoPage}" class="info-btn">More Info</a>
+            <a href="${addon.download}" class="download-btn">Download</a>
+          </div>
         </div>
-        <div class="meta">v${addon.version} • by ${addon.author}</div>
-        <button class="download" onclick="window.open('${addon.infoPage}', '_blank')">ℹ️ More Info</button>
-      </div>
-    `;
-    container.appendChild(card);
-  });
+      `;
+      container.appendChild(card);
+    });
+  } catch (err) {
+    console.error('Failed to load addons:', err);
+  }
 }
+
 loadAddons();
 </script>
-
 </body>
 </html>
