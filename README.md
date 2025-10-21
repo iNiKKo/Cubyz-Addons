@@ -1,27 +1,32 @@
-# 🌐 Cubyz Addon Central
+# 🌐 **CubyzHub**
 
-**A community website for sharing and discovering addons for the game**
+**A community hub for sharing and discovering addons for Cubyz.**
 
-> Browse and download custom addons made by the community.
+> Browse, upload, and download custom addons made by the community.
 
 ---
 
-## 📦 How to Submit Your Addon
+## 📤 Uploading for the First Time
 
-Want your addon listed on the site?  
-Send the following information to the repository maintainer (via PR or message):
+You can easily submit your addon using the **CubyzHub uploader**.  
+Just click the **Upload** button next to the CubyzHub title.  
+This will open the upload page where you can fill in your addon’s details and upload your files.
 
-### ✉️ What to Send:
+🔗 **Upload your addon here:**  
+👉 [Addon Uploader](https://addons.ashframe.net/upload.html)
 
-1. **Name** – What’s your addon called?  
-2. **Description** – A short summary of what it does.  
-3. **Tags** – Relevant keywords (e.g. `Blocks`, `Recipes`, `Biome`).  
-4. **Version** – Addon version (e.g. `v0.1`).  
-5. **Your Name** – Crediting the creator.  
-6. **Images**:
-    - `name_icon.png` (64x64 recommended)
-    - `name_background.png` (used as banner)
-7. **Addon File**:
-    - `name_v0.0.zip` file containing your addon files.
+Once submitted, your addon will be automatically added to the site after review.
 
-> **Note:** Please use the same naming scheme as shown above & only use lowercase letters, thank you.
+---
+
+## 🔄 Updating an Existing Addon
+
+Currently, updating addons **through the web uploader is not supported**.  
+To update your addon, you’ll need to manually:
+
+1. Edit the main `addons.json` file to update your addon’s version or details.  
+2. Replace, update or add new screenshots or other can be done via your addon’s folder in the repository.
+
+> ⚠️ This limitation will be removed in a future update once the uploader supports version updates.
+
+---
