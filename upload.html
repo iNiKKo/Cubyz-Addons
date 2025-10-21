@@ -240,7 +240,7 @@ form.addEventListener("submit", async e => {
   if (!data.get("shortDescription") && data.get("description"))
     data.append("shortDescription", data.get("description"));
 
-  const workerUrl = "https://cubyz-addon-uploader.jankajnicolas.workers.dev/";
+  const workerUrl = "api.cubyzlist.site/";
 
   try {
     const res = await fetch(workerUrl, { method: "POST", body: data });
