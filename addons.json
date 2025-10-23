@@ -144,16 +144,16 @@
     "id": "grassy",
     "name": "Grassy",
     "description": "Adds recipes for all grass block variants",
-    "longDescription": "Combine 4x soil or mud with any foliage variant to craft 4x of the corresponding grass block",
+    "longDescription": "Combine a foliage variant with four of its corresponding ground blocks to produce four grass block of the same type.",
     "tags": [
       "Recipes"
     ],
-    "version": "0.0.0",
+    "version": "0.1.0",
     "author": "creare",
     "cubyzVersion": "0.0.0 - 0.1.0-dev",
     "banner": "addons/grassy/banner.png",
     "icon": "addons/grassy/grassy_icon.png",
-    "download": "addons/grassy/grassy_v0.0.0.zip",
+    "download": "addons/grassy/grassy_v0.1.0.zip",
     "infoPage": "addons/grassy/grassy-info.html",
     "screenshots": [
       "addons/grassy/screenshot_1.png"
@@ -162,9 +162,13 @@
       {
         "version": "0.0.0",
         "notes": "Initial release"
+      },
+      {
+        "version": "0.1.0",
+        "notes": "updated recipes to match ground and vegetation types together."
       }
     ],
-    "updated": "21 October 2025"
+    "updated": "23 October 2025"
   },
   {
     "id": "fancy_willows",
