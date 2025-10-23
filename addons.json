@@ -143,8 +143,8 @@
   {
     "id": "grassy",
     "name": "Grassy",
-    "description": "Adds recipes for all grass block variants",
-    "longDescription": "Combine a foliage variant with four of its corresponding ground blocks to produce four grass block of the same type.",
+    "description": "Adds recipes for all the grass blocks",
+    "longDescription": "Combine foliage and ground blocks from the same biome to craft grass blocks",
     "tags": [
       "Recipes"
     ],
@@ -165,7 +165,7 @@
       },
       {
         "version": "0.1.0",
-        "notes": "updated recipes to match ground and vegetation types together."
+        "notes": "Updated recipes to match ground and vegetation types together"
       }
     ],
     "updated": "23 October 2025"
