@@ -59,7 +59,7 @@
     "id": "extra_biomes",
     "name": "Extra Biomes",
     "description": "New biomes, blocks and items.",
-    "longDescription": "**Current State**\r\n\r\n**Main Biomes**\r\n- **Snowy Crimsonforest**  \r\n  `/tp extrabiomes:snowy_crimsonforest`\r\n\r\n**Sub-Biomes**\r\n- Ice Lake  \r\n- High Snowy Crimsonforest  \r\n\r\n**Blocks**\r\n- Crimson Needles  \r\n- Leafy Crimson Needles  \r\n- Red Fern  \r\n\r\n**Items**\r\n- **Pine Cone** Ã¢ÂÂ dropped by Crimson Needles  \r\n- **Golden Pine Cone** Ã¢ÂÂ *canÃ¢ÂÂt be obtained yet*  \r\n- **Blueberries** Ã¢ÂÂ *canÃ¢ÂÂt be obtained yet*  \r\n\r\n**Crafting Recipes**\r\n- `4ÃÂ Pine Cones Ã¢ÂÂ 1ÃÂ Resin`  \r\n\r\n**Structures**\r\n- Various **tree structures** for Snowy Crimsonforest  \r\n- Various **stone structures** for Snowy Crimsonforest\r\n- **Outpost tower** structure for Snowy Crimsonforest",
+    "longDescription": "**Current State**\r\n\r\n**Main Biomes**\r\n- **Snowy Crimsonforest**  \r\n  `/tp extrabiomes:snowy_crimsonforest`\r\n\r\n**Sub-Biomes**\r\n- Ice Lake  \r\n- High Snowy Crimsonforest  \r\n\r\n**Blocks**\r\n- Crimson Needles  \r\n- Leafy Crimson Needles  \r\n- Red Fern  \r\n\r\n**Items**\r\n- **Pine Cone** ÃÂ¢ÃÂÃÂ dropped by Crimson Needles  \r\n- **Golden Pine Cone** ÃÂ¢ÃÂÃÂ *canÃÂ¢ÃÂÃÂt be obtained yet*  \r\n- **Blueberries** ÃÂ¢ÃÂÃÂ *canÃÂ¢ÃÂÃÂt be obtained yet*  \r\n\r\n**Crafting Recipes**\r\n- `4ÃÂÃÂ Pine Cones ÃÂ¢ÃÂÃÂ 1ÃÂÃÂ Resin`  \r\n\r\n**Structures**\r\n- Various **tree structures** for Snowy Crimsonforest  \r\n- Various **stone structures** for Snowy Crimsonforest\r\n- **Outpost tower** structure for Snowy Crimsonforest",
     "tags": [
       "Biome",
       "Blocks",
@@ -221,5 +221,31 @@
       }
     ],
     "updated": "24 October 2025"
+  },
+  {
+    "id": "window_frames",
+    "name": "Window frames",
+    "description": "A small mod adding window frames",
+    "longDescription": "I've been working on this small addon which adds framed glass panels that can be used as windows. They can be put on glass blocks for the color and they are transparent.\r\nFor now there is one model, with a cross section, that I really wanted to add on the game for building.\r\nThey are based on carpets, so they may be small bugs related to that.\r\nI plan to add more types in the future.",
+    "tags": [],
+    "version": "0.2",
+    "author": "LordGibbon",
+    "cubyzVersion": "0.0.0",
+    "banner": "addons/window_frames/window_frames_background.png",
+    "icon": "addons/window_frames/window_frames_icon.png",
+    "download": "addons/window_frames/window_frames_v0.2.zip",
+    "infoPage": "addons/window_frames/window_frames-info.html",
+    "screenshots": [
+      "addons/window_frames/screenshot_1.png",
+      "addons/window_frames/screenshot_2.png",
+      "addons/window_frames/screenshot_3.png"
+    ],
+    "patchNotes": [
+      {
+        "version": "0.2",
+        "notes": "Fixed the item's texture's folder error."
+      }
+    ],
+    "updated": "25 October 2025"
   }
 ]
