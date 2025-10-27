@@ -90,31 +90,37 @@
     "id": "plasteel",
     "name": "Industrial Plasteel",
     "description": "Expand your Materialz plugin with Industrial Plasteel! its a strong Steel Alloy but its tricky to use so watch out!",
-    "longDescription": "# Industrial Plasteel\r\n\r\nWant to expand your metal variety? Industrial Plasteel comes with rescue!\r\nIntroduce Industrial Plasteel metal to your world!\r\n\r\nIndustrial Plasteel is a Steel Alloy with a very durable nature,\r\nhowever it doesnt go well with precious metals which are crucial\r\nfor strong and fast pickaxes, but that doesnt mean its useless!\r\nBecause of durability beating uranium its a perfect choice to\r\nmake ur tools last!\r\n\r\nRecipes:\r\n\r\n**Zinc Sulfide**\r\n1 Zinc Ingot, 1 Sulfur\r\n\r\n**Aluminum Carbide**\r\n4 Aluminum Ingot, 3 Coal\r\n\r\n**Unstable Compound**\r\n7 Aluminum Carbide, 2 Zinc Sulfide\r\n\r\n**Plasteel Compound**\r\n2 Steel, Unstable Compound\r\n\r\n**Industrial Plasteel**\r\nPlasteel Compound, 4 Sulfur\r\n\r\n**Industrial Plasteel Nugget**\r\nIndustrial Plasteel",
+    "longDescription": "# Industrial Plasteel\r\n\r\nWant to expand your metal variety? Industrial Plasteel comes with rescue!\r\nIntroduce Industrial Plasteel metal to your world!\r\n\r\nIndustrial Plasteel is a Steel Alloy with a very durable nature,\r\nhowever it doesnt go well with precious metals which are crucial\r\nfor strong and fast pickaxes, but that doesnt mean its useless!\r\nBecause of durability beating uranium its a perfect choice to\r\nmake ur tools last!\r\n\r\nRecipes:\r\n\r\n**Zinc Sulfide**\r\n1 Zinc Ingot, 1 Sulfur\r\n\r\n**Aluminum Carbide**\r\n4 Aluminum Ingot, 3 Coal\r\n\r\n**Unstable Compound**\r\n7 Aluminum Carbide, 2 Zinc Sulfide\r\n\r\n**Plasteel Compound**\r\n2 Steel, Unstable Compound\r\n\r\n**Industrial Plasteel**\r\nPlasteel Compound, 4 Sulfur\r\n\r\n**Industrial Plasteel Nugget**\r\nIndustrial Plasteel\r\nCrimson Garnet spawns between -12500 and -50000!",
     "tags": [
       "Materialz",
       "Recipes"
     ],
-    "version": "0.0.0",
+    "version": "0.0.1",
     "author": "Immortal SpellDagger",
-    "cubyzVersion": "0.0.0 Native | Tested on 0.1.0",
+    "cubyzVersion": "0.0.0 Native | Tested on 0.1.0 Dev",
     "banner": "addons/plasteel/plasteel_background.png",
     "icon": "addons/plasteel/plasteel_icon.png",
-    "download": "addons/plasteel/plasteel_v0.0.0.zip",
+    "download": "addons/plasteel/plasteel_v0.0.1.zip",
     "infoPage": "addons/plasteel/plasteel-info.html",
     "screenshots": [
       "addons/plasteel/screenshot_1.png",
       "addons/plasteel/screenshot_2.png",
       "addons/plasteel/screenshot_3.png",
-      "addons/plasteel/screenshot_4.png"
+      "addons/plasteel/screenshot_4.png",
+      "addons/plasteel/screenshot_5.png",
+      "addons/plasteel/screenshot_6.png"
     ],
     "patchNotes": [
       {
         "version": "0.0.0",
         "notes": ""
+      },
+      {
+        "version": "0.0.1",
+        "notes": "Marrowsteel and Crimson Garnet ore"
       }
     ],
-    "updated": "21 October 2025"
+    "updated": "27 October 2025"
   },
   {
     "id": "fancy_jungle",
