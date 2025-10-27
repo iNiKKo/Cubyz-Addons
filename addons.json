@@ -255,7 +255,10 @@
         "notes": ""
       }
     ],
-    "updated": "26 October 2025"
+    "updated": "27 October 2025"
+  },
+  {
+    "updated": "26 October 2025",
     "id": "window_frames",
     "name": "Window frames",
     "description": "A small mod adding window frames",
