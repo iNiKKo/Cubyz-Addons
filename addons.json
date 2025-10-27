@@ -95,26 +95,32 @@
       "Materialz",
       "Recipes"
     ],
-    "version": "0.0.0",
+    "version": "0.0.1",
     "author": "Immortal SpellDagger",
-    "cubyzVersion": "0.0.0 Native | Tested on 0.1.0",
+    "cubyzVersion": "0.0.0 Native | Tested on 0.1.0 Dev",
     "banner": "addons/plasteel/plasteel_background.png",
     "icon": "addons/plasteel/plasteel_icon.png",
-    "download": "addons/plasteel/plasteel_v0.0.0.zip",
+    "download": "addons/plasteel/plasteel_v0.0.1.zip",
     "infoPage": "addons/plasteel/plasteel-info.html",
     "screenshots": [
       "addons/plasteel/screenshot_1.png",
       "addons/plasteel/screenshot_2.png",
       "addons/plasteel/screenshot_3.png",
-      "addons/plasteel/screenshot_4.png"
+      "addons/plasteel/screenshot_4.png",
+      "addons/plasteel/screenshot_5.png",
+      "addons/plasteel/screenshot_6.png"
     ],
     "patchNotes": [
       {
         "version": "0.0.0",
         "notes": ""
+      },
+      {
+        "version": "0.0.1",
+        "notes": "Marrowsteel and Crimson Garnet ore"
       }
     ],
-    "updated": "21 October 2025"
+    "updated": "27 October 2025"
   },
   {
     "id": "fancy_jungle",
