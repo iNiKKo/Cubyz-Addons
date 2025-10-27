@@ -90,31 +90,37 @@
     "id": "plasteel",
     "name": "Industrial Plasteel",
     "description": "Expand your Materialz plugin with Industrial Plasteel! its a strong Steel Alloy but its tricky to use so watch out!",
-    "longDescription": "# Industrial Plasteel\r\n\r\nWant to expand your metal variety? Industrial Plasteel comes with rescue!\r\nIntroduce Industrial Plasteel metal to your world!\r\n\r\nIndustrial Plasteel is a Steel Alloy with a very durable nature,\r\nhowever it doesnt go well with precious metals which are crucial\r\nfor strong and fast pickaxes, but that doesnt mean its useless!\r\nBecause of durability beating uranium its a perfect choice to\r\nmake ur tools last!\r\n\r\nRecipes:\r\n\r\n**Zinc Sulfide**\r\n1 Zinc Ingot, 1 Sulfur\r\n\r\n**Aluminum Carbide**\r\n4 Aluminum Ingot, 3 Coal\r\n\r\n**Unstable Compound**\r\n7 Aluminum Carbide, 2 Zinc Sulfide\r\n\r\n**Plasteel Compound**\r\n2 Steel, Unstable Compound\r\n\r\n**Industrial Plasteel**\r\nPlasteel Compound, 4 Sulfur\r\n\r\n**Industrial Plasteel Nugget**\r\nIndustrial Plasteel",
+    "longDescription": "# Industrial Plasteel\r\n\r\nWant to expand your metal variety? Industrial Plasteel comes with rescue!\r\nIntroduce Industrial Plasteel metal to your world!\r\n\r\nIndustrial Plasteel is a Steel Alloy with a very durable nature,\r\nhowever it doesnt go well with precious metals which are crucial\r\nfor strong and fast pickaxes, but that doesnt mean its useless!\r\nBecause of durability beating uranium its a perfect choice to\r\nmake ur tools last!\r\n\r\nRecipes:\r\n\r\n**Zinc Sulfide**\r\n1 Zinc Ingot, 1 Sulfur\r\n\r\n**Aluminum Carbide**\r\n4 Aluminum Ingot, 3 Coal\r\n\r\n**Unstable Compound**\r\n7 Aluminum Carbide, 2 Zinc Sulfide\r\n\r\n**Plasteel Compound**\r\n2 Steel, Unstable Compound\r\n\r\n**Industrial Plasteel**\r\nPlasteel Compound, 4 Sulfur\r\n\r\n**Industrial Plasteel Nugget**\r\nIndustrial Plasteel\r\nCrimson Garnet spawns between -12500 and -50000!",
     "tags": [
       "Materialz",
       "Recipes"
     ],
-    "version": "0.0.0",
+    "version": "0.0.1",
     "author": "Immortal SpellDagger",
-    "cubyzVersion": "0.0.0 Native | Tested on 0.1.0",
+    "cubyzVersion": "0.0.0 Native | Tested on 0.1.0 Dev",
     "banner": "addons/plasteel/plasteel_background.png",
     "icon": "addons/plasteel/plasteel_icon.png",
-    "download": "addons/plasteel/plasteel_v0.0.0.zip",
+    "download": "addons/plasteel/plasteel_v0.0.1.zip",
     "infoPage": "addons/plasteel/plasteel-info.html",
     "screenshots": [
       "addons/plasteel/screenshot_1.png",
       "addons/plasteel/screenshot_2.png",
       "addons/plasteel/screenshot_3.png",
-      "addons/plasteel/screenshot_4.png"
+      "addons/plasteel/screenshot_4.png",
+      "addons/plasteel/screenshot_5.png",
+      "addons/plasteel/screenshot_6.png"
     ],
     "patchNotes": [
       {
         "version": "0.0.0",
         "notes": ""
+      },
+      {
+        "version": "0.0.1",
+        "notes": "Marrowsteel and Crimson Garnet ore"
       }
     ],
-    "updated": "21 October 2025"
+    "updated": "27 October 2025"
   },
   {
     "id": "fancy_jungle",
@@ -197,8 +203,8 @@
   {
     "id": "MobilityBlocksIsAwesome",
     "name": "Mobility Blocks",
-    "description": "Move faster! Adds speed paths, bounce pads, and more traversal tools.",
-    "longDescription": "A mobility QoL addon that introduces speed paths, bouncy mushrooms, and other traversal tools to make exploring Cubyz faster and more enjoyable. (BOUNCE PAD NOT YET ADDED!)",
+    "description": "Move faster! Adds speed paths, ladders, bounce pads, and more traversal tools.",
+    "longDescription": "# MobilityBlocks\r\n\r\nThis addon introduces a collection of new blocks designed to enhance player movement and world traversal.\r\n\r\n## Features\r\n\r\n* **Paths:** A placeable block that, when walked on, significantly increases the player's movement speed. Intended for creating rapid transit routes or connecting distant areas.\r\n* **Bounce Pads (Planned Feature):** A future block intended to launch the player hundreds or even thousands of blocks vertically into the air. This will provide extreme long-distance traversal capabilities, far exceeding the shorter bounces from existing mushrooms.\r\n* **Ladders:** A classic, climbable block. Ladders can be placed against vertical surfaces to allow the player to ascend and descend walls and structures easily.\r\n* **Additional Traversal Tools:** Includes other items and blocks to assist with navigating the game world.",
     "tags": [
       "QoL",
       "Blocks",
@@ -212,12 +218,19 @@
     "download": "addons/MobilityBlocksIsAwesome/MobilityBlocksIsAwesome_v0.0.0.zip",
     "infoPage": "addons/MobilityBlocksIsAwesome/MobilityBlocksIsAwesome-info.html",
     "screenshots": [
-      "addons/MobilityBlocksIsAwesome/screenshot_1.png"
+      "addons/MobilityBlocksIsAwesome/screenshot_1.png",
+      "addons/MobilityBlocksIsAwesome/screenshot_2.png",
+      "addons/MobilityBlocksIsAwesome/screenshot_3.png",
+      "addons/MobilityBlocksIsAwesome/screenshot_4.png"
     ],
     "patchNotes": [
       {
         "version": "0.0.0",
-        "notes": "Initial release"
+        "notes": "Added ladders and tweaked path health."
+      },
+      {
+        "version": "0.0.0",
+        "notes": "Added ladders and tweaked path health."
       }
     ],
     "updated": "24 October 2025"
@@ -243,5 +256,29 @@
       }
     ],
     "updated": "26 October 2025"
+    "id": "window_frames",
+    "name": "Window frames",
+    "description": "A small mod adding window frames",
+    "longDescription": "I've been working on this small addon which adds framed glass panels that can be used as windows. They can be put on glass blocks for the color and they are transparent.\r\nFor now there is one model, with a cross section, that I really wanted to add on the game for building.\r\nThey are based on carpets, so they may be small bugs related to that.\r\nI plan to add more types in the future.",
+    "tags": [],
+    "version": "0.2",
+    "author": "LordGibbon",
+    "cubyzVersion": "0.0.0",
+    "banner": "addons/window_frames/window_frames_background.png",
+    "icon": "addons/window_frames/window_frames_icon.png",
+    "download": "addons/window_frames/window_frames_v0.2.zip",
+    "infoPage": "addons/window_frames/window_frames-info.html",
+    "screenshots": [
+      "addons/window_frames/screenshot_1.png",
+      "addons/window_frames/screenshot_2.png",
+      "addons/window_frames/screenshot_3.png"
+    ],
+    "patchNotes": [
+      {
+        "version": "0.2",
+        "notes": "Fixed the item's texture's folder error."
+      }
+    ],
+    "updated": "25 October 2025"
   }
 ]
