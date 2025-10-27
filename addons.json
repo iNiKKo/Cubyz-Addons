@@ -236,6 +236,26 @@
     "updated": "24 October 2025"
   },
   {
+    "id": "tighter_bushlands",
+    "name": "Tighter Bushlands",
+    "description": "Makes the bush_lands biome more realistic and overall nicer.",
+    "longDescription": "An addon that makes the bush_lands biome much more tightly overgrown, just like real life, resulting in a much nicer looking biome.",
+    "tags": [],
+    "version": "0.1.0",
+    "author": "TudbuT",
+    "cubyzVersion": "0.0.0",
+    "banner": "",
+    "icon": "addons/tighter_bushlands/tighter_bushlands_icon.png",
+    "download": "addons/tighter_bushlands/tighter_bushlands_v0.1.0.zip",
+    "infoPage": "addons/tighter_bushlands/tighter_bushlands-info.html",
+    "screenshots": [],
+    "patchNotes": [
+      {
+        "version": "0.1.0",
+        "notes": ""
+      }
+    ],
+    "updated": "26 October 2025"
     "id": "window_frames",
     "name": "Window frames",
     "description": "A small mod adding window frames",
