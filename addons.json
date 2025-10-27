@@ -203,8 +203,8 @@
   {
     "id": "MobilityBlocksIsAwesome",
     "name": "Mobility Blocks",
-    "description": "Move faster! Adds speed paths, bounce pads, and more traversal tools.",
-    "longDescription": "A mobility QoL addon that introduces speed paths, bouncy mushrooms, and other traversal tools to make exploring Cubyz faster and more enjoyable. (BOUNCE PAD NOT YET ADDED!)",
+    "description": "Move faster! Adds speed paths, ladders, bounce pads, and more traversal tools.",
+    "longDescription": "# MobilityBlocks\r\n\r\nThis addon introduces a collection of new blocks designed to enhance player movement and world traversal.\r\n\r\n## Features\r\n\r\n* **Paths:** A placeable block that, when walked on, significantly increases the player's movement speed. Intended for creating rapid transit routes or connecting distant areas.\r\n* **Bounce Pads (Planned Feature):** A future block intended to launch the player hundreds or even thousands of blocks vertically into the air. This will provide extreme long-distance traversal capabilities, far exceeding the shorter bounces from existing mushrooms.\r\n* **Ladders:** A classic, climbable block. Ladders can be placed against vertical surfaces to allow the player to ascend and descend walls and structures easily.\r\n* **Additional Traversal Tools:** Includes other items and blocks to assist with navigating the game world.",
     "tags": [
       "QoL",
       "Blocks",
@@ -218,12 +218,19 @@
     "download": "addons/MobilityBlocksIsAwesome/MobilityBlocksIsAwesome_v0.0.0.zip",
     "infoPage": "addons/MobilityBlocksIsAwesome/MobilityBlocksIsAwesome-info.html",
     "screenshots": [
-      "addons/MobilityBlocksIsAwesome/screenshot_1.png"
+      "addons/MobilityBlocksIsAwesome/screenshot_1.png",
+      "addons/MobilityBlocksIsAwesome/screenshot_2.png",
+      "addons/MobilityBlocksIsAwesome/screenshot_3.png",
+      "addons/MobilityBlocksIsAwesome/screenshot_4.png"
     ],
     "patchNotes": [
       {
         "version": "0.0.0",
-        "notes": "Initial release"
+        "notes": "Added ladders and tweaked path health."
+      },
+      {
+        "version": "0.0.0",
+        "notes": "Added ladders and tweaked path health."
       }
     ],
     "updated": "24 October 2025"
