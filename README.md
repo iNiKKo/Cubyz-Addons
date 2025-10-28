@@ -1,4 +1,4 @@
-# 🌐 **CubyzHub**
+# 🌐 **CubyzHub DEPRECATED**
 
 **A community hub for sharing and discovering addons for Cubyz.**
 
